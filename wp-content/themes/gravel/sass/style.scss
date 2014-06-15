@@ -9,39 +9,12 @@ License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
+@import 'reset';
+@import 'base';
+@import 'mixins';
+@import 'type';
 
 
-
-h1 {
-    @include h1;
-}
-h2 {
-    @include h2;
-}
-.h2-alt {
-    @include h2-alt;
-}
-h3 {
-    @include h3;
-}
-.h3-alt {
-    @include h3-alt;
-}
-h4 {
-	@include h4;
-}
-h5 {
-	@include h4;
-}
-p {
-    @include p;
-}
-.p-alt {
-    @include p-alt;
-}
-.uppercase {
-    text-transform: uppercase;
-}
 section {
     @include block-rel;
     width: 100%;
@@ -64,18 +37,6 @@ main {
 }
 
 /*HEADER*/
-
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    vertical-align: baseline;
-    background: transparent;
-    list-style: none;
-    font-size: 100%;
-    font-style: normal;
-}
 
 
 /* =LINKS
@@ -135,60 +96,7 @@ p a {
 
 p a:hover { color: hsl(149, 69%, 34%); }
 
-h1, h2, h3, h4 {
-    font-family: "proxima-nova";
-    font-weight: 700;
-}
 
-h2 {
-    background: #FFF;
-    color: #333;
-    display: block;
-    font-size: 2.5em;
-    font-weight: 900;
-    left: 0;
-    line-height: 1;
-    padding: 10px 20px;
-    position: absolute;
-    top: 50px;
-    text-transform: uppercase;
-    z-index: 99999;
-}
-
-h2:after {
-	content: '';
-	position: absolute;
-	width: 0;
-	height: 0;
-	right: -46px;
-	top: 0;
-	border-width: 22px 22px;
-	border-style: solid;
-	border-color: #FFF transparent #FFF #FFF;
-    z-index: 99;
-}
-
-.altgreen {
-    background: rgb(13%, 69%, 39%)!important;
-    color: #FFF!important;
-}
-
-.altgreen:after { border-color: rgb(13%, 69%, 39%) transparent rgb(13%, 69%, 39%) rgb(13%, 69%, 39%)!important; }
-
-h3 {
-    font-size: 2em;
-    text-align: left;
-}
-
-h4 {
-    font-size: 1.5em;
-    text-align: left;
-}
-
-h5 {
-    font-size: 1.25em;
-    font-weight: 400;
-}
 
 strong { font-weight: 600; }
 
@@ -231,35 +139,37 @@ strong { font-weight: 600; }
     -ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
     -o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
     filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+	&::before {
+		content: '';
+		position: absolute;
+		width: 0;
+		height: 0;
+		left: -51px;
+		top: 0;
+		border-width: 26px 26px;
+		border-style: solid;
+		border-color: hsl(148, 68%, 50%) hsl(148, 68%, 50%) transparent transparent;
+		z-index: 99;
+	}
+	a {
+		display: block;
+		float: left;
+		height: 39px;
+		margin-left: 5px;
+		opacity: 0.6;
+		-webkit-transition: opacity linear 0.2s;
+		&:first-child {
+			margin-left: 0;
+		}
+		&:hover {
+			opacity: 0.9;
+		}
+		img {
+			height: 100%;
+		}
+	}
 }
 
-.social:before {
-	content: '';
-	position: absolute;
-	width: 0;
-	height: 0;
-	left: -51px;
-	top: 0;
-	border-width: 26px 26px;
-	border-style: solid;
-	border-color: hsl(148, 68%, 50%) hsl(148, 68%, 50%) transparent transparent;
-    z-index: 99;
-}
-
-.social a img { height: 100%; }
-
-.social a {
-    display: block;
-    float: left;
-    height: 39px;
-    margin-left: 5px;
-    opacity: 0.6;
-    -webkit-transition: opacity linear 0.2s;
-}
-
-.social a:hover { opacity: 0.9; }
-
-.social a:first-child { margin-left: 0; }
 
 #backToTop::before {
     bottom: 0;
@@ -485,6 +395,14 @@ header article strong {
 #updates article {
     border-bottom: 1px dashed rgba(30,30,30,0.6);
     margin-bottom: 1.5em;
+	&:last-child {
+		border-bottom: none;
+	}
+	img {
+		float: left;
+		margin-right: 1.5em;
+		width: 20%;
+	}
 }
 
 hr {
@@ -494,21 +412,12 @@ hr {
     width: 60%;
 }
 
-#updates article:last-child {
-    border-bottom: none;
-}
-
 #updates time {
     font-size: 1.25em;
     font-weight: 600;
     text-align: left!important;
 }
 
-#updates article img {
-    float: left;
-    margin-right: 1.5em;
-    width: 20%;
-}
 
 /* =ABOUT
 ----------------------------------------------- */
@@ -520,42 +429,39 @@ hr {
     overflow: hidden;
     padding: 0!important;
     position: relative;
+	article {
+		background: #FFF;
+		bottom: 40px;
+		padding: 30px;
+		position: absolute;
+		right: 0;
+		width: 40%;
+		-webkit-backface-visibility: hidden;
+	}
+	h4 {
+		background: #22B063;
+		color: #FFF;
+		bottom: 200px;
+		font-size: 2em;
+		font-weight: 700;
+		left: 0;
+		letter-spacing: 1px;
+		padding: 30px;
+		position: absolute;
+		text-transform: uppercase;
+		-webkit-backface-visibility: hidden;
+		address {
+			display: block;
+			font-size: 0.5em;
+			font-weight: 600;
+			position: relative;
+		}
+	}
+	p {
+		margin-bottom: 0;
+	}
 }
 
-#venues article {
-    background: #FFF;
-    bottom: 40px;
-    padding: 30px;
-    position: absolute;
-    right: 0;
-    width: 40%;
-    -webkit-backface-visibility: hidden;
-}
-
-#venues h4 {
-    background: #22B063;
-    color: #FFF;
-    bottom: 200px;
-    font-size: 2em;
-    font-weight: 700;
-    left: 0;
-    letter-spacing: 1px;
-    padding: 30px;
-    position: absolute;
-    text-transform: uppercase;
-    -webkit-backface-visibility: hidden;
-}
-
-#venues h4 address {
-    display: block;
-    font-size: 0.5em;
-    font-weight: 600;
-    position: relative;
-}
-
-#venues p {
-    margin-bottom: 0;
-}
 
 /* =SCHEDULE
 ----------------------------------------------- */
@@ -614,32 +520,28 @@ table tr:nth-child(2n) td {
 #lineup ul {
     margin-top: 1em;
     width: 100%;
-}
-
-#lineup ul li {
-    display: inline-block;
-    position: relative;
-    width: 33%;
-}
-
-#lineup ul li h5 {
-    font-size: 1.1em;
-    font-weight: 700;
-    position: absolute;
-    text-align: center;
-    text-transform: uppercase;
-    top: 50%;
-    -webkit-transform: translate(0,-50%);
-    -webkit-transition: all 0.3s;
-    z-index: 999;
-}
-
-#lineup ul li:hover h5 {
-    font-size: 1.5em;
-}
-
-#lineup ul li img {
-    display: block;
+	li {
+		display: inline-block;
+		position: relative;
+		width: 33%;
+		&:hover h5 {
+			font-size: 1.5em;
+		}
+		h5 {
+			font-size: 1.1em;
+			font-weight: 700;
+			position: absolute;
+			text-align: center;
+			text-transform: uppercase;
+			top: 50%;
+			-webkit-transform: translate(0,-50%);
+			-webkit-transition: all 0.3s;
+			z-index: 999;
+		}
+		img {
+			display: block;
+		}
+	}
 }
 
 .overlay {
@@ -724,23 +626,21 @@ table tr:nth-child(2n) td {
 #workshops {
     background-color: #20AF64;
     color: #FFF;
-}
-
-#workshops a {
-    display: inline-block;
-    font-size: 1.5em;
-    font-weight: 600;
-    position: relative;
-    -webkit-transition: all ease 0.3s;
-}
-
-#workshops a:hover::before {
-    background: #FFF;
-    content: "";
-    height: 100%;
-    left: -20px;
-    position: absolute;
-    width: 8px;
+	a {
+		display: inline-block;
+		font-size: 1.5em;
+		font-weight: 600;
+		position: relative;
+		-webkit-transition: all ease 0.3s;
+		&:hover::before {
+			background: #FFF;
+			content: "";
+			height: 100%;
+			left: -20px;
+			position: absolute;
+			width: 8px;
+		}
+	}
 }
 
 /* =SPONSORS
