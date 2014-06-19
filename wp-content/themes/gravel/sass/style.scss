@@ -67,7 +67,7 @@ section {
     overflow: hidden;
 }
 
-section, header, footer {
+section, footer {
     padding: 150px 0 70px;
     position: relative;
     text-align: center;
@@ -114,7 +114,7 @@ strong { font-weight: 600; }
 .block { display: block; }
 
 .noiseBG {
-    background: url(../img/broken_noise.jpg) repeat 0 0;
+    background: url(img/broken_noise.jpg) repeat 0 0;
     background-attachment: scroll;
     background-size: auto;
     color: #FFF;
@@ -170,7 +170,6 @@ strong { font-weight: 600; }
 	}
 }
 
-
 #backToTop::before {
     bottom: 0;
 	content: '';
@@ -194,12 +193,12 @@ strong { font-weight: 600; }
 
 /* =NAVIGATION
 ----------------------------------------------- */
-#navMin, .navToggle {
+.navMin, .navToggle {
     display: none;
 }
 
-#navMain {
-    background: url(../img/broken_noise.jpg) repeat 0 0 transparent;
+.navMain {
+    background: url(img/broken_noise.jpg) repeat 0 0 transparent;
     height: 60px;
     left: 0;
     position: fixed;
@@ -209,20 +208,54 @@ strong { font-weight: 600; }
     width: 100%;
     z-index: 10000;
     -webkit-transition: all ease 0.5s;
+	ul {
+		width: 100%;
+		li {
+			float: left;
+			height: auto;
+			position: relative;
+			width: calc(100%/8);
+			&:hover::after {
+				background: #20AF64;
+				bottom: -3px;
+				content: "";
+				display: block;
+				height: 3px;
+				position: absolute;
+			}
+			&[data-type*="link"] a:hover, &.active a {
+				background: hsl(149, 69%, 41%);
+				color: #FFF;
+				font-weight: 600;
+			}
+			a {
+				color: #FFF;
+				display: block;
+				font-size: 1em;
+				font-weight: 600;
+				letter-spacing: 1px;
+				line-height: 60px;
+				padding: 0 30px;
+				text-transform: uppercase;
+				-webkit-transition: all ease 0.5s;
+			}
+		}
+	}
 }
 
-#navMain ul {
-    width: 100%;
-}
 
-#navMain ul li {
-    float: left;
-    height: auto;
+.logotype {
+    background: url(img/branding2.svg) no-repeat center transparent;
+    background-size: cover;
+    display: inline-block;
+    left: calc(50% - 160px/2);
     position: relative;
-    width: calc(100%/8);
+    text-align: center;
+    text-indent: -9000px;
+    width: 160px;
 }
 
-#navMain ul li a, #navMin ul li a {
+.navMin ul li a {
     color: #FFF;
     display: block;
     font-size: 1em;
@@ -234,41 +267,9 @@ strong { font-weight: 600; }
     -webkit-transition: all ease 0.5s;
 }
 
-#navMain ul li:hover:after {
-    background: #20AF64;
-    bottom: -3px;
-    content: "";
-    display: block;
-    height: 3px;
-    position: absolute;
-}
-
-#navMain ul li[data-type*="link"] a:hover, #navMain ul li.active a {
-    background: hsl(149, 69%, 41%);
-    color: #FFF;
-}
-
-#navMain ul li.active a {
-    font-weight: 600;
-}
-
-.logotype {
-    background: url(../img/branding2.svg) no-repeat center transparent;
-    background-size: cover;
-    display: inline-block;
-    left: calc(50% - 160px/2);
-    position: relative;
-    text-align: center;
-    text-indent: -9000px;
-    width: 160px;
-}
-
 /* =HEADER
 ----------------------------------------------- */
 header {
-    background-color: hsl(147, 65%, 42%);
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    padding-top: 100px;
     position: relative;
     text-align: center;
     width: 100%;
@@ -584,7 +585,7 @@ table tr:nth-child(2n) td {
 }
 
 .popup-youtube {
-    background: url(../img/playvideo.svg) no-repeat center;
+    background: url(img/playvideo.svg) no-repeat center;
     background-size: cover;
     height: 50px;
     left: -150%;
@@ -866,22 +867,22 @@ and (max-width: 800px) {
         display: none;
     }
     
-    #navMin {
+    .navMin {
         display: block;
     }
     
-    #navMin ul {
+    .navMin ul {
         display: block;
         width: 100%;
     }
         
-    #navMin ul li {
+    .navMin ul li {
         background: #333;
         height: 100%;
         width: 100%;
     }
     
-    #navMin ul li a {
+    .navMin ul li a {
         display: block;
         float: left;
         font-weight: 600;
@@ -904,25 +905,25 @@ and (max-width: 800px) {
         background: hsl(149, 69%, 40%)!important;
     }
     
-    #navMin li ul {
+    .navMin li ul {
         display: none;
         float: left;
         position: relative;
         z-index: 0;
     }
     
-    #navMin li ul li {
+    .navMin li ul li {
         height: 35px;
     }
     
-    #navMin ul li ul li a {
+    .navMin ul li ul li a {
         font-size: 0.875em;
         font-weight: 400;
         line-height: 35px;
         width: 100%;
     }
     
-    #navMin ul li ul li a:hover {
+    .navMin ul li ul li a:hover {
         background: hsl(149, 69%, 41%);
     }
     
@@ -947,7 +948,7 @@ and (max-width: 800px) {
     }
     
     .nav-toggle::before {
-        background: url(../img/menu_arrow.svg);
+        background: url(img/menu_arrow.svg);
         background-size: 28px 16px;
         content: "";
         height: 16px;

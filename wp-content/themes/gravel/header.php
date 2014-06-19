@@ -20,7 +20,7 @@
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url');?>">
-    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.png" />
     <?php wp_head(); ?>
 </head>
 
@@ -31,25 +31,27 @@
             <a href="https://twitter.com/GreenGravelFest" id="twitter" class="icon"><img src="/img/twitter_trans.svg" alt="@GreenGravelFest Twitter page" /></a>
             <a href="https://www.facebook.com/GreenGravelComedyFest" id="facebook" class="icon"><img src="/img/facebook_trans.svg" alt="Facebook page" /></a>
         </div>
-        <nav id="navMain">
+        <nav class="navMain">
             <ul class="group">
                 <li><a class="logotype pulse">Green Gravel Comedy Festival</a></li>
                 <li data-type="link"><a href="#updates" data-scroll="updates">News</a></li>
                 <li data-type="link"><a href="#about" data-scroll="about">Fest Info</a></li>
                 <li data-type="link"><a href="#schedule" data-scroll="schedule">Schedule</a></li>
-                <li data-type="link"><a href="#lineup" data-scroll="lineup">Lineup</a></li>
+                <li data-type="link"><a href="<?php echo site_url(); ?>/lineup" data-scroll="lineup">Lineup</a></li>
                 <li data-type="link"><a href="#submissions" data-scroll="submissions">Submissions</a></li>
                 <li data-type="link"><a href="#sponsors" data-scroll="sponsors">Sponsors</a></li>
                 <li data-type="link"><a href="#staff" data-scroll="staff">Staff</a></li>
             </ul>
         </nav>
+        
+        <?php wp_nav_menu( array( 'theme_location' => 'primary-menu' ) ); ?>
 
         <a href="#" class="navToggle">+</a>
         
         <a href="#donate" id="donateButton">Donate!</a>
         
         
-        <nav id="navMin">
+        <nav class="navMin">
             <ul class="group">
                 <li class="festinfo group">
                     <a href="#about">Festival Info</a>

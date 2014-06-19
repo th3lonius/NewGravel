@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<section id="exhibitions"></section>
-
     <section id="content" role="main">
 
 		<?php if ( have_posts() ) : ?>
@@ -29,7 +27,7 @@
 
 			<?php endwhile; ?>
 
-			<?php/* tyler_paging_nav(); */?>
+
 
 		<?php else : ?>
 
@@ -41,7 +39,5 @@
 
     <?php get_template_part( 'left', 'none' ); ?>
 
-	<?php get_template_part( 'right', 'none' ); ?>
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
