@@ -26,31 +26,28 @@
 
 <body <?php body_class(); ?>>
 
-    <header>
-        <div class="social group">
+
+<!--        <div class="social group">
             <a href="https://twitter.com/GreenGravelFest" id="twitter" class="icon"><img src="/img/twitter_trans.svg" alt="@GreenGravelFest Twitter page" /></a>
             <a href="https://www.facebook.com/GreenGravelComedyFest" id="facebook" class="icon"><img src="/img/facebook_trans.svg" alt="Facebook page" /></a>
-        </div>
+        </div>-->
         <nav class="navMain">
             <ul class="group">
-                <li><a class="logotype pulse">Green Gravel Comedy Festival</a></li>
+                <li></li>
                 <li data-type="link"><a href="#updates" data-scroll="updates">News</a></li>
                 <li data-type="link"><a href="#about" data-scroll="about">Fest Info</a></li>
-                <li data-type="link"><a href="#schedule" data-scroll="schedule">Schedule</a></li>
+                <li data-type="link"><a href="<?php echo site_url(); ?>/schedule" data-scroll="schedule">Schedule</a></li>
                 <li data-type="link"><a href="<?php echo site_url(); ?>/lineup" data-scroll="lineup">Lineup</a></li>
                 <li data-type="link"><a href="#submissions" data-scroll="submissions">Submissions</a></li>
                 <li data-type="link"><a href="#sponsors" data-scroll="sponsors">Sponsors</a></li>
                 <li data-type="link"><a href="#staff" data-scroll="staff">Staff</a></li>
             </ul>
         </nav>
-        
+                
         <?php wp_nav_menu( array( 'theme_location' => 'primary-menu' ) ); ?>
 
         <a href="#" class="navToggle">+</a>
-        
-        <a href="#donate" id="donateButton">Donate!</a>
-        
-        
+
         <nav class="navMin">
             <ul class="group">
                 <li class="festinfo group">
@@ -79,4 +76,10 @@
             </ul>
         </nav>
         
-    </header><!-- /header -->
+
+
+<!--<a class="logotype pulse">Green Gravel Comedy Festival</a>-->
+
+<header><h2><?php echo $post->post_type; ?></h2></header>
+
+<main id="content">

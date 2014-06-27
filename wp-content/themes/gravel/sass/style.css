@@ -33,6 +33,7 @@ nav ul {
   list-style: none; }
 
 img, object {
+  height: auto;
   max-width: 100%; }
 
 blockquote, q {
@@ -83,28 +84,39 @@ body, html {
   width: 100%;
   -webkit-font-smoothing: antialiased !important; }
 
+html {
+  font-size: 62.5%; }
+
 body {
-  background-image: url(../img/broken_noise.jpg) repeat 0 0 transparent;
-  color: #333;
+  background: url(img/broken_noise.jpg) repeat 0 0;
+  background-attachment: scroll;
+  background-size: auto;
+  color: #FFF;
   font-family: "proxima-nova";
-  font-size: 100%;
-  line-height: 1.45;
+  font-size: 1.6rem;
+  line-height: 1.625;
   position: relative; }
 
+#lineup ul:after {
+  content: "";
+  display: table;
+  clear: both; }
 
 /*BREAKPOINTS*/
 /*ANIMATIONS*/
 /*VARIABLES*/
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
+  display: inline-block;
   font-family: "proxima-nova";
   font-weight: 700; }
 
+h1 {
+  font-size: 3.6rem; }
 
 h2 {
   background: #FFF;
   color: #333;
-  display: block;
-  font-size: 2.5em;
+  font-size: 3.45rem;
   font-weight: 900;
   left: 0;
   line-height: 1;
@@ -126,15 +138,19 @@ h2 {
     z-index: 99; }
 
 h3 {
-  font-size: 2em; }
+  font-size: 2.4rem; }
 
 h4 {
-  font-size: 1.5em; }
+  font-size: 2.3rem; }
 
 h5 {
-  font-size: 1.25em;
+  font-size: 1.6rem;
   font-weight: 400; }
 
+p {
+  font-size: 1.53rem;
+  font-weight: 500;
+  margin-bottom: 1.6rem; }
 
 .p-alt {
   font-family: "atrament-web", sans-serif;
@@ -192,14 +208,11 @@ a:hover {
 .wrapper {
   margin: 0 auto;
   position: relative;
-  max-width: 70em;
+  max-width: 75em;
   z-index: 1000; }
 
-section {
-  overflow: hidden; }
-
 section, footer {
-  padding: 150px 0 70px;
+  padding: 100px 0;
   position: relative;
   text-align: center;
   width: 100%;
@@ -209,13 +222,6 @@ section article {
   position: relative;
   text-align: left;
   width: 100%; }
-
-section p {
-  font-size: 1.25em;
-  font-weight: 500;
-  line-height: 1.5;
-  margin-bottom: 1em;
-  text-align: left; }
 
 p a {
   color: #20b166 !important;
@@ -238,12 +244,6 @@ strong {
 
 .block {
   display: block; }
-
-.noiseBG {
-  background: url(img/broken_noise.jpg) repeat 0 0;
-  background-attachment: scroll;
-  background-size: auto;
-  color: #FFF; }
 
 .floatright {
   float: right !important; }
@@ -355,10 +355,9 @@ strong {
 .logotype {
   background: url(img/branding2.svg) no-repeat center transparent;
   background-size: cover;
-  display: inline-block;
-  left: calc(50% - 160px/2);
+  display: block;
+  left: 10px;
   position: relative;
-  text-align: center;
   text-indent: -9000px;
   width: 160px; }
 
@@ -590,87 +589,39 @@ table tr:nth-child(2n) td {
   width: 100%; }
   #lineup ul li {
     display: inline-block;
+    float: left;
+    overflow: hidden;
     position: relative;
-    width: 33%; }
-    #lineup ul li:hover h5 {
-      font-size: 1.5em; }
-    #lineup ul li h5 {
-      font-size: 1.1em;
+    width: 25%; }
+    #lineup ul li:hover img {
+      -webkit-transform: scale(1.1);
+      -moz-transform: scale(1.1);
+      -o-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      transform: scale(1.1);
+      -webkit-transition: all 0.25s ease ;
+      -moz-transition: all 0.25s ease ;
+      -o-transition: all 0.25s ease ;
+      -ms-transition: all 0.25s ease ;
+      transition: all 0.25s ease ; }
+    #lineup ul li:first-child {
+      width: 50%; }
+    #lineup ul li h4 {
+      background: rgba(0, 0, 0, 0.65);
+      bottom: 0;
       font-weight: 700;
+      padding: 8px;
       position: absolute;
-      text-align: center;
       text-transform: uppercase;
-      top: 50%;
-      -webkit-transform: translate(0, -50%);
-      -webkit-transition: all 0.3s;
+      width: 100%;
       z-index: 999; }
     #lineup ul li img {
-      display: block; }
-
-.overlay {
-  background: rgba(0, 0, 0, 0.1);
-  display: block;
-  height: 100%;
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-  z-index: 9999999; }
-
-.overlay:hover {
-  background: rgba(32, 176, 102, 0.9); }
-
-.ticketlink, .popup-youtube {
-  display: block;
-  position: absolute; }
-
-.ticketlink {
-  background: #FFF;
-  border-left: 6px solid #3f9267;
-  color: #20b166 !important;
-  font-size: 1em;
-  font-weight: 600;
-  line-height: 1;
-  padding: 4px 8px !important;
-  top: 10px;
-  right: -250%;
-  padding: 0 10px; }
-
-.ticketlink + .ticketlink {
-  bottom: 10px;
-  left: -250%;
-  right: auto;
-  top: auto; }
-
-.popup-youtube {
-  background: url(img/playvideo.svg) no-repeat center;
-  background-size: cover;
-  height: 50px;
-  left: -150%;
-  opacity: 0.7;
-  top: 50%;
-  width: 50px;
-  -webkit-transform: translateY(-50%); }
-
-.ticketlink:hover {
-  background: #20b166 !important;
-  color: #FFF !important; }
-
-.popup-youtube:hover {
-  opacity: 1; }
-
-.overlay:hover a.ticketlink {
-  right: 0; }
-
-.overlay:hover .ticketlink + .ticketlink {
-  left: 0;
-  right: auto; }
-
-.overlay:hover time {
-  left: 0; }
-
-.overlay:hover .popup-youtube {
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%); }
+      display: block;
+      -webkit-transition: all 0.25s ease ;
+      -moz-transition: all 0.25s ease ;
+      -o-transition: all 0.25s ease ;
+      -ms-transition: all 0.25s ease ;
+      transition: all 0.25s ease ; }
 
 /* =WORKSHOPS
 ----------------------------------------------- */

@@ -14,28 +14,37 @@ get_header(); ?>
 
 ?>
     
-    <section id="lineup" class="noiseBG">
+    <article id="lineup">
     
-    <span style="font-size: 26px; color: red; float: right;">I am archive-lineup</span>
-    
-		<h2>Lineup</h2>
-		
-		<article class="wrapper performers">
-		
-		<h3>Featured Performers</h3>
-
 		<?php if ( $lineup_query->have_posts() ) : ?>
 		
-			<ul class="group">
+			<ul>
 
 			<?php while ( $lineup_query->have_posts() ) : $lineup_query->the_post(); ?>
-                    
+              
+                <?php $image = get_field('image'); ?>
+                <?php if( !empty($image) ): 
+ 
+					// vars
+					$url = $image['url'];
+					$title = $image['title'];
+					$alt = $image['alt'];
+					$caption = $image['caption'];
+
+					// thumbnail
+					$size = 'thumbnail';
+					$thumb = $image['sizes'][ $size ];
+					$width = $image['sizes'][ $size . '-width' ];
+					$height = $image['sizes'][ $size . '-height' ]; ?>
+                
 				<li>
 					<a href="<?php the_permalink(); ?>">
-						<?php the_title( '<h5>', '</h5>' ); ?>
-						<img src="img/performers/kashian_t.jpg"/>
+						<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
+						<?php the_title( '<h4>', '</h4>' ); ?>
 					</a>
 				</li>
+				
+				<?php endif; ?>
 
 			<?php endwhile; ?>
 			
@@ -47,10 +56,8 @@ get_header(); ?>
 
 		<?php endif; ?>
 
-		
-		</article>
 
-	</section><!-- #lineup -->
+	</article><!-- #lineup -->
 
 <?php get_footer(); ?>
 

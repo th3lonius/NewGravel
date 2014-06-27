@@ -22,6 +22,25 @@ register_nav_menus(
 );
 
 add_action( 'init', 'lineup_post_type' );
+add_action( 'init', 'schedule_post_type' );
+add_action( 'init', 'venues_post_type' );
+
+function venues_post_type() {
+
+	register_post_type( 'venues', array(
+		'labels' => array(
+			'name' => __('Venues'),
+			'singular_name' => __('Venue')
+			),
+		'public' => true,
+		'show_ui' => true,
+		'rewrite' => array(
+			'slug' => 'venues',
+			'with_front' => false
+			),
+		'has_archive' => true
+	) );
+}
 
 function lineup_post_type() {
 
@@ -38,7 +57,23 @@ function lineup_post_type() {
 			),
 		'has_archive' => true
 	) );
+}
 
+function schedule_post_type() {
+
+	register_post_type( 'schedule', array(
+		'labels' => array(
+			'name' => __('Schedule'),
+			'singular_name' => __('Event')
+			),
+		'public' => true,
+		'show_ui' => true,
+		'rewrite' => array(
+			'slug' => 'schedule',
+			'with_front' => false
+			),
+		'has_archive' => true
+	) );
 }
 
 function theme_css() {

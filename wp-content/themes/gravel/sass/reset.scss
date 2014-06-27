@@ -38,7 +38,10 @@ nav ul {
     list-style:none;
 }
 
-img, object { max-width: 100%; }
+img, object {
+	height: auto;
+	max-width: 100%;
+}
 
 blockquote, q {
     quotes:none;
@@ -97,4 +100,8 @@ body, html {
 	line-height: 1;
 	width: 100%;
 	-webkit-font-smoothing: antialiased!important;
+}
+
+html {
+    font-size: 62.5%;
 }

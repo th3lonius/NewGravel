@@ -1,23 +1,30 @@
-h1, h2, h3, h4 {
-    font-family: "proxima-nova";
+/* =HIERARCHY */
+$h1: 7.3302rem;
+$h2: 4.7123rem;
+$h3: 4.5304rem;
+$h4: 2.9124rem;
+$h5: 2.8rem;
+$base: 1.8rem;
+
+h1, h2, h3, h4, h5 {
+	display: block;
+    font-family: $title-font-alt;
     font-weight: 700;
 }
 
 h1 {
-    
+	font-size: $h1;
+	font-weight: 900;
 }
 
-h2 {
+header h2 {
     background: #FFF;
     color: #333;
-    display: block;
-    font-size: 2.5em;
-    font-weight: 900;
     left: 0;
     line-height: 1;
     padding: 10px 20px;
-    position: absolute;
-    top: 50px;
+    position: fixed;
+    top: 80px;
     text-transform: uppercase;
     z-index: 99999;
 	&::after {
@@ -25,30 +32,37 @@ h2 {
 		position: absolute;
 		width: 0;
 		height: 0;
-		right: -46px;
+		right: -50px;
 		top: 0;
-		border-width: 22px 22px;
+		border-width: 24px 24px;
 		border-style: solid;
 		border-color: #FFF transparent #FFF #FFF;
 		z-index: 99;
 	}
 }
 
+h2 {
+    font-size: $h2;
+    font-weight: 900;
+}
+
 h3 {
-    font-size: 2em;
+    font-size: $h3;
 }
 
 h4 {
-    font-size: 1.5em;
+    font-size: $h4;
 }
 
 h5 {
-    font-size: 1.25em;
+    font-size: $h5;
     font-weight: 400;
 }
 
 p {
-    
+    font-size: $base;
+	font-weight: 500;
+	margin-bottom: $base;
 }
 
 .p-alt {
@@ -65,4 +79,8 @@ p {
 	&::after {
 		border-color: rgb(13%, 69%, 39%) transparent rgb(13%, 69%, 39%) rgb(13%, 69%, 39%)!important;
 	}
+}
+
+aside date {
+	
 }

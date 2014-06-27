@@ -15,11 +15,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @import 'type';
 
 
-section {
-    @include block-rel;
-    width: 100%;
-    height: 100vh;
-}
+
 figure {
     @include block-rel;
     width: 100%;
@@ -29,12 +25,7 @@ figure {
 figcaption {
     @include block-rel;
 }
-main {
-    @include block-rel;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
+
 
 /*HEADER*/
 
@@ -54,40 +45,23 @@ a:hover {
 
 /* =GLOBALS
 ----------------------------------------------- */
-
-
-.wrapper {
-    margin: 0 auto;
+main {
+    margin: 80px auto;
     position: relative;
     max-width: 70em;
-    z-index: 1000;
+    z-index: 1;
+	@extend clearfix;
 }
 
-section {
-    overflow: hidden;
-}
-
-section, footer {
-    padding: 150px 0 70px;
-    position: relative;
-    text-align: center;
-    width: 100%;
-    z-index: 100;
-}
-
-section article {
+article {
     position: relative;
     text-align: left;
-    width: 100%;
 }
 
-section p {
-    font-size: 1.25em;
-    font-weight: 500;
-    line-height: 1.5;
-    margin-bottom: 1em;
-    text-align: left;
+aside {
+
 }
+
 
 p a {
     color: hsl(149, 69%, 41%)!important;
@@ -100,25 +74,18 @@ p a:hover { color: hsl(149, 69%, 34%); }
 
 strong { font-weight: 600; }
 
-.col-1 {
+.col-2-3 {
     float: left;
-    text-align: left;
-    width: 48%;
+    width: 66%;
 }
 
-.col-2 {
+.col-1-3 {
     float: right;
-    width: 48%;
+    width: 30%;
 }
 
 .block { display: block; }
 
-.noiseBG {
-    background: url(img/broken_noise.jpg) repeat 0 0;
-    background-attachment: scroll;
-    background-size: auto;
-    color: #FFF;
-}
 
 .floatright {
     float: right!important;
@@ -126,50 +93,6 @@ strong { font-weight: 600; }
 
 /* =FIXED ITEMS
 ----------------------------------------------- */
-.social {
-    background: hsl(148, 68%, 50%);
-    right: 0;
-    padding: 6px 6px 6px 0;
-    position: fixed;
-    top: 180px;
-    width: 95px;
-    z-index: 100;
-    -webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-    -moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-    -ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-    -o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-	&::before {
-		content: '';
-		position: absolute;
-		width: 0;
-		height: 0;
-		left: -51px;
-		top: 0;
-		border-width: 26px 26px;
-		border-style: solid;
-		border-color: hsl(148, 68%, 50%) hsl(148, 68%, 50%) transparent transparent;
-		z-index: 99;
-	}
-	a {
-		display: block;
-		float: left;
-		height: 39px;
-		margin-left: 5px;
-		opacity: 0.6;
-		-webkit-transition: opacity linear 0.2s;
-		&:first-child {
-			margin-left: 0;
-		}
-		&:hover {
-			opacity: 0.9;
-		}
-		img {
-			height: 100%;
-		}
-	}
-}
-
 #backToTop::before {
     bottom: 0;
 	content: '';
@@ -198,15 +121,15 @@ strong { font-weight: 600; }
 }
 
 .navMain {
-    background: url(img/broken_noise.jpg) repeat 0 0 transparent;
-    height: 60px;
+    background: hsl(149, 69%, 41%);
+    height: 40px;
     left: 0;
     position: fixed;
     text-align: center;
     top: 0;
     right: 0;
     width: 100%;
-    z-index: 10000;
+    z-index: 999999;
     -webkit-transition: all ease 0.5s;
 	ul {
 		width: 100%;
@@ -214,7 +137,7 @@ strong { font-weight: 600; }
 			float: left;
 			height: auto;
 			position: relative;
-			width: calc(100%/8);
+			width: calc(100%/7);
 			&:hover::after {
 				background: #20AF64;
 				bottom: -3px;
@@ -231,10 +154,11 @@ strong { font-weight: 600; }
 			a {
 				color: #FFF;
 				display: block;
-				font-size: 1em;
-				font-weight: 600;
+				font-family: $title-font-alt;
+				font-size: $base;
+				font-weight: 700;
 				letter-spacing: 1px;
-				line-height: 60px;
+				line-height: 40px;
 				padding: 0 30px;
 				text-transform: uppercase;
 				-webkit-transition: all ease 0.5s;
@@ -246,13 +170,12 @@ strong { font-weight: 600; }
 
 .logotype {
     background: url(img/branding2.svg) no-repeat center transparent;
-    background-size: cover;
-    display: inline-block;
-    left: calc(50% - 160px/2);
-    position: relative;
-    text-align: center;
+    background-size: 90%;
+    display: block;
+    left: 10px; top: 10px;
+    position: fixed;
     text-indent: -9000px;
-    width: 160px;
+    width: 160px; height: 160px;
 }
 
 .navMin ul li a {
@@ -269,17 +192,6 @@ strong { font-weight: 600; }
 
 /* =HEADER
 ----------------------------------------------- */
-header {
-    position: relative;
-    text-align: center;
-    width: 100%;
-    z-index: 101;
-}
-
-header a {
-    color: #FFF!important;
-    font-weight: 300;
-}
 
 .branding {
     margin: 0 auto;
@@ -302,94 +214,6 @@ header article strong {
     font-weight: 900;
 }
 
-#donateButton {
-    background: hsl(322, 50%, 26%);
-    font-weight: 700;
-    padding: 10px 16px;
-    position: absolute;
-    right: 0;
-    text-transform: uppercase;
-    top: 120px;
-}
-
-#donateButton:hover { background: hsl(322, 50%, 23%); }
-
-#donateButton:before {
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-	right: 101px;
-	top: 0;
-	border-width: 18px 18px;
-	border-style: solid;
-	border-color: hsl(321, 50%, 18%) hsl(321, 50%, 18%) transparent transparent;
-    z-index: 99;
-}
-
-.presalepasses > li {
-    float: left;
-    padding: 20px;
-    text-align: center;
-    width: 33%;
-}
-
-.presalepasses li a {
-    background: #FFF;
-    border-radius: 16px;
-    box-shadow: 1px 1px 1px rgba(0,0,0,0.4);
-    color: #000!important;
-    display: block;
-    padding: 30px;
-}
-
-.presalepasses li a:hover {
-    -webkit-transform: scale(1.2);
-}
-
-.presalepasses li h4 {
-    text-align: center;
-}
-
-.presalepasses li img {
-    width: 50%;
-}
-
-.presalepasses > li ul li, .presalepasses > li p {
-    font-size: 1em;
-    font-weight: 500;
-    margin-bottom: 0.5em;
-    position: relative;
-    text-align: left;
-}
-
-.presalepasses > li ul li::before {
-    background: #666;
-    content: "";
-    height: 4px;
-    position: absolute;
-    left: -12px;
-    top: 6px;
-    width: 4px;
-}
-
-.minigraveller {
-    border: 10px solid hsl(54, 48%, 75%);
-}
-
-.weekendpass {
-    border: 12px solid hsl(54, 99%, 72%);
-    box-shadow: 1px 1px 10px rgba(0,0,0,0.5)!important;
-}
-
-.festtime {
-    left: 20%!important;
-    margin-top: -1em!important;
-}
-
-.flip-clock-divider span {
-    display: none;
-}
 
 /* =UPDATES
 ----------------------------------------------- */
@@ -521,106 +345,70 @@ table tr:nth-child(2n) td {
 #lineup ul {
     margin-top: 1em;
     width: 100%;
+	@extend %clearfix;
 	li {
 		display: inline-block;
+		float: left;
+		overflow: hidden;
 		position: relative;
-		width: 33%;
-		&:hover h5 {
-			font-size: 1.5em;
+		width: 25%;
+		&:hover img {
+			@include scale(1.1);
+			@include transition(all, 0.25s, ease);
+			@include fullcolor;
 		}
-		h5 {
-			font-size: 1.1em;
-			font-weight: 700;
+		&:first-child {
+			width: 50%;
+		}
+		h4 {
+			background: rgba(0,0,0,0.65);
+			bottom: 0;
+			font-family: $title-font-alt;
+			font-weight: 500;
+			padding: 8px;
 			position: absolute;
-			text-align: center;
 			text-transform: uppercase;
-			top: 50%;
-			-webkit-transform: translate(0,-50%);
-			-webkit-transition: all 0.3s;
+			width: 100%;
 			z-index: 999;
 		}
 		img {
 			display: block;
+			@include grayscale;
+			@include transition(all, 0.25s, ease);
 		}
 	}
 }
 
-.overlay {
-    background: rgba(0,0,0,0.1);
-    display: block;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
-    z-index: 9999999;
+.show_node {
+	background: rgba(0,0,0,0.2);
+	margin-bottom: $base;
+	padding: $base;
+	text-align: center;
 }
 
-.overlay:hover {
-    background: hsla(149, 69%, 41%, 0.9);
+.showdate {
+	@include border-radius(9999);
+	background: #FFF;
+	color: #333;
+	margin: 0 auto;
+	text-transform: uppercase;
+	width: 120px; height: 120px;
 }
 
-.ticketlink, .popup-youtube {
-    display: block;
-    position: absolute;
+.day {
+	line-height: 0.8;
+	padding-top: 38px;
 }
 
-.ticketlink {
-    background: #FFF;
-    border-left: 6px solid hsl(149, 40%, 41%);
-    color: hsl(149, 69%, 41%)!important;
-    font-size: 1em;
-    font-weight: 600;
-    line-height: 1;
-    padding: 4px 8px!important;
-    top: 10px;
-    right: -250%;
-    padding: 0 10px;
+.friday {
+	background: #F2B132;
 }
 
-.ticketlink + .ticketlink {
-    bottom: 10px;
-    left: -250%;
-    right: auto;
-    top: auto;
+.saturday {
+	background: #EC563C;
 }
 
-.popup-youtube {
-    background: url(img/playvideo.svg) no-repeat center;
-    background-size: cover;
-    height: 50px;
-    left: -150%;
-    opacity: 0.7;
-    top: 50%;
-    width: 50px;
-    -webkit-transform: translateY(-50%);
-}
 
-.ticketlink:hover {
-    background: hsl(149, 69%, 41%)!important;
-    color: #FFF!important;
-}
-
-.popup-youtube:hover {
-    opacity: 1;
-}
-
-.overlay:hover a.ticketlink {
-    right: 0;
-}
-
-.overlay:hover .ticketlink + .ticketlink {
-    left: 0;
-    right: auto;
-}
-
-.overlay:hover time {
-    left: 0;
-}
-
-.overlay:hover .popup-youtube {
-    left: 50%;
-    -webkit-transform: translate(-50%,-50%);
-}
 
 /* =WORKSHOPS
 ----------------------------------------------- */
@@ -799,9 +587,6 @@ h5 {
 @media only screen
 and (max-width: 1200px) {
     
-    section {
-        padding: 150px 40px 70px;
-    }
             
     #sponsors article, #sponsors ul, #donate article {
         width: 100%;
@@ -979,11 +764,8 @@ and (max-width: 800px) {
 @media only screen
 and (max-width: 850px) {
         
-    section {
-        padding: 120px 30px 30px;
-    }
-    
-    section p {
+
+    p {
         font-size: 0.75em;
     }
     
@@ -1022,15 +804,12 @@ and (max-width: 850px) {
 and (min-width: 200px)
 and (max-width: 600px) {
             
-    section {
-        padding: 100px 30px 30px;
-    }
-        
+ 
     h2 {
         font-size: 2em;
     }
 
-    section p {
+    p {
         font-size: 0.75em;
     }
     

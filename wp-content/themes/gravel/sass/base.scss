@@ -1,9 +1,11 @@
 body {
-    background-image: url(../img/broken_noise.jpg) repeat 0 0 transparent;
-    color: #333;
+    background: url(img/broken_noise.jpg) repeat 0 0;
+    background-attachment: scroll;
+    background-size: auto;
+    color: #FFF;
     font-family: "proxima-nova";
-    font-size: 100%;
-    line-height: 1.45;
+    font-size: 1.6rem;
+    line-height: 1.5;
     position: relative;
 }
 
@@ -68,16 +70,32 @@ $break-large: 1024px;
   box-shadow: $horiz $vert $blur $spread $color;
 }
 
-@mixin imgblur($radius) {
+@mixin imgblur( $radius ) {
 	-webkit-filter: blur($radius+px); -moz-filter: blur($radius+px);
 	-o-filter: blur($radius+px); -ms-filter: blur($radius+px);
 	filter: url(images/blur.svg#blur); filter: blur($radius+px); filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='$radius');
 }
 
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+@mixin border-radius( $radius ) {
+	-webkit-border-radius: $radius+px;
+	-moz-border-radius: $radius+px;
+	-o-border-radius: $radius+px;
+	-ms-border-radius: $radius+px;
+	border-radius: $radius+px;
 }
 
+@mixin scale( $size ) {
+	-webkit-transform: scale($size);
+	-moz-transform: scale($size);
+	-o-transform: scale($size);
+	-ms-transform: scale($size);
+	transform: scale($size);
+}
+
+@mixin transition( $property, $duration, $function, $delay:"" ) {
+	-webkit-transition: $property $duration $function unquote($delay);
+	-moz-transition: $property $duration $function unquote($delay);
+	-o-transition: $property $duration $function unquote($delay);
+	-ms-transition: $property $duration $function unquote($delay);
+	transition: $property $duration $function unquote($delay);
+}
