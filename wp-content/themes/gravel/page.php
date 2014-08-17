@@ -37,7 +37,6 @@
 
 	</section><!-- #content -->
 
-    <?php get_template_part( 'left', 'none' ); ?>
 
 
 <?php get_footer(); ?>

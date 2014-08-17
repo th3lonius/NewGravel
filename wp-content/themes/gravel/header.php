@@ -31,55 +31,42 @@
             <a href="https://twitter.com/GreenGravelFest" id="twitter" class="icon"><img src="/img/twitter_trans.svg" alt="@GreenGravelFest Twitter page" /></a>
             <a href="https://www.facebook.com/GreenGravelComedyFest" id="facebook" class="icon"><img src="/img/facebook_trans.svg" alt="Facebook page" /></a>
         </div>-->
-        <nav class="navMain">
-            <ul class="group">
+        <nav class="nav-down">
+            <ul>
                 <li></li>
                 <li data-type="link"><a href="#updates" data-scroll="updates">News</a></li>
-                <li data-type="link"><a href="#about" data-scroll="about">Fest Info</a></li>
+                <li data-type="link"><a href="<?php echo site_url(); ?>/festinfo" data-scroll="about">Fest Info</a></li>
                 <li data-type="link"><a href="<?php echo site_url(); ?>/schedule" data-scroll="schedule">Schedule</a></li>
                 <li data-type="link"><a href="<?php echo site_url(); ?>/lineup" data-scroll="lineup">Lineup</a></li>
-                <li data-type="link"><a href="#submissions" data-scroll="submissions">Submissions</a></li>
+                <li data-type="link"><a href="<?php echo site_url(); ?>/submissions" data-scroll="submissions">Submissions</a></li>
                 <li data-type="link"><a href="#sponsors" data-scroll="sponsors">Sponsors</a></li>
                 <li data-type="link"><a href="#staff" data-scroll="staff">Staff</a></li>
             </ul>
         </nav>
-                
-        <?php wp_nav_menu( array( 'theme_location' => 'primary-menu' ) ); ?>
-
-        <a href="#" class="navToggle">+</a>
-
-        <nav class="navMin">
-            <ul class="group">
-                <li class="festinfo group">
-                    <a href="#about">Festival Info</a>
-                    <a class="nav-toggle"></a>
-                    <ul class="subnav">
-                        <li><a href="#venues">Venues</a></li>
-                        <li><a href="#sponsors">Sponsors</a></li>
-                        <li><a href="#staff">Staff</a></li>
-                    </ul>
-                </li>
-                <li class="schedule group">
-                    <a href="#lineup">Schedule</a>
-                    <a class="nav-toggle"></a>
-                    <ul class="subnav">
-                        <li><a href="#lineup">Lineup</a></li>
-                        <li><a href="#workshops">Workshops</a></li>
-                        <li><a href="#submissions">Submissions</a></li>
-                    </ul>
-                </li>
-                <li class="donate group"><a href="#donate">Donate</a></li>
-                <li class="media">
-                    <a href="https://twitter.com/GreenGravelFest">Twitter</a>
-                    <a href="https://www.facebook.com/GreenGravelComedyFest">Facebook</a>
-                </li>
-            </ul>
-        </nav>
-        
 
 
 <!--<a class="logotype pulse">Green Gravel Comedy Festival</a>-->
 
-<header><h2><?php echo $post->post_type; ?></h2></header>
+<header>
 
-<main id="content">
+	<?php
+		if ( is_single() ) {
+		
+			echo the_title('<h2>','</h2>');
+			
+		} elseif ( is_front_page() ) {
+		
+		
+		
+		} else {
+		
+			?> <h2><?php echo $post->post_type; ?></h2>
+			
+			<?php
+		
+		}
+	?>
+
+</header>
+
+<main>

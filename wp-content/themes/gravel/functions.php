@@ -21,9 +21,28 @@ register_nav_menus(
     )
 );
 
+
+add_action( 'init', 'festinfo_post_type' );
 add_action( 'init', 'lineup_post_type' );
 add_action( 'init', 'schedule_post_type' );
 add_action( 'init', 'venues_post_type' );
+
+function festinfo_post_type() {
+
+	register_post_type( 'festinfo', array(
+		'labels' => array(
+			'name' => __('Festival Info'),
+			'singular_name' => __('Festival Info')
+			),
+		'public' => true,
+		'show_ui' => true,
+		'rewrite' => array(
+			'slug' => 'festinfo',
+			'with_front' => false
+			),
+		'has_archive' => true
+	) );
+}
 
 function venues_post_type() {
 
@@ -76,12 +95,6 @@ function schedule_post_type() {
 	) );
 }
 
-function theme_css() {
-    wp_register_style( 'superslides', get_template_directory_uri() . '/css/superslides.css', array(), '20120208', 'all' );
-    wp_enqueue_style( 'superslides' );
-}
-
-add_action( 'wp_enqueue_scripts', 'theme_css' );
 
 function theme_js() {
     wp_register_script( 'main', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '', true );

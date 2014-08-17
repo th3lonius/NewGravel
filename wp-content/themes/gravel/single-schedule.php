@@ -15,7 +15,6 @@ get_header(); ?>
 			
 
 				<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
-				<?php the_title( '<h1>', '</h1>' ); ?>
 				
 												
 			<?php endwhile; ?>

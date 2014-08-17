@@ -4,12 +4,11 @@
 
 get_header(); ?>
     
-    <article class="col-2-3">
-    
-		<header><h2>Lineup</h2></header>
+    <article>
 		
 		<?php if ( have_posts() ) : ?>
 		
+		<section class="col-2-3">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 			
@@ -27,23 +26,30 @@ get_header(); ?>
 					$thumb = $image['sizes'][ $size ];
 					$width = $image['sizes'][ $size . '-width' ];
 					$height = $image['sizes'][ $size . '-height' ]; ?>
+					
 
+			<header>			
 				<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
-				<?php the_title( '<h1>', '</h1>' ); ?>
+			</header>
+				
 				<p><?php the_field( 'bio' ); ?></p>
 				
 				<?php endif; ?>
 
 			<?php endwhile; ?>
+			
+		</section>
 
 		<?php else : ?>
-
+			
 			<?php get_template_part( 'content', 'none' ); ?>
 
 		<?php endif; ?>
 		
+	<?php get_template_part( 'aside', 'lineup' ); ?>
+	
 	</article>
 	
-	<?php get_template_part( 'aside', 'lineup' ); ?>
+	<?php get_template_part( 'venues', '' ); ?>
 	
 <?php get_footer(); ?>

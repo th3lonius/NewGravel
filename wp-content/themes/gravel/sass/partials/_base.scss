@@ -1,0 +1,47 @@
+/*VARIABLES*/
+$green: #92B540;
+$blue: #009BA6;
+$red: #CD4D58;
+$yellow: #CDC638;
+$black: #333332;
+$blackbg: rgba(0,0,0,0.6);
+$white: rgba(255,255,255,1.0);
+$title-font: "atrament-web", sans-serif;
+$title-font-alt: "refrigerator-deluxe", sans-serif;
+$display-font: "prenton-display", sans-serif;
+
+body {
+    background: url(img/broken_noise.jpg) repeat 0 0;
+    background-attachment: fixed;
+    background-size: auto;
+    color: #FFF;
+    font-family: "proxima-nova";
+    font-size: 1.6rem;
+    line-height: 1.618;
+    position: relative;
+}
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/*BREAKPOINTS*/
+$break-small: 800px;
+$break-large: 1280px;
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == medium-screen {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == wide-screen {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+

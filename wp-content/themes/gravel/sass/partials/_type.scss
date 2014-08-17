@@ -1,0 +1,92 @@
+/* =HIERARCHY */
+$h1: 7.3302rem;
+$h2: 4.7123rem;
+$h3: 4.5304rem;
+$h4: 2.9124rem;
+$h5: 2.8rem;
+$base: 1.8rem;
+$mobile-base: 1.7305rem;
+
+h1, h2, h3, h4, h5 {
+	display: block;
+    font-family: $title-font-alt;
+    font-weight: 700;
+}
+
+h1 {
+	font-size: $h1;
+	font-weight: 900;
+}
+
+header h2 {
+    background: #FFF;
+    color: #333;
+    left: 0;
+    line-height: 1;
+    padding: 10px 20px;
+    position: fixed;
+    top: 60px;
+    text-transform: uppercase;
+    z-index: 99999;
+	&::after {
+		content: '';
+		position: absolute;
+		width: 0;
+		height: 0;
+		right: -50px;
+		top: 0;
+		border-width: 24px 24px;
+		border-style: solid;
+		border-color: #FFF transparent #FFF #FFF;
+		z-index: 99;
+	}
+}
+
+h2 {
+    font-size: $h2;
+    font-weight: 900;
+}
+
+h3 {
+    font-size: $h3;
+}
+
+h4 {
+    font-size: $h4;
+}
+
+h5 {
+    font-size: $h5;
+    font-weight: 400;
+}
+
+p {
+    font-size: $base;
+	font-weight: 500;
+	margin-bottom: $base;
+	@include respond-to(mobile) {
+		font-size: $mobile-base;
+	}
+}
+
+
+.altgreen {
+    background: rgb(13%, 69%, 39%)!important;
+    color: #FFF!important;
+	&::after {
+		border-color: rgb(13%, 69%, 39%) transparent rgb(13%, 69%, 39%) rgb(13%, 69%, 39%)!important;
+	}
+}
+
+/* =LINKS
+----------------------------------------------- */
+
+a:link, a:visited {
+    color: #FFF;
+    text-decoration: none;
+    -webkit-transition: all ease 0.2s;
+}
+
+a:hover {
+    color: #FFF;
+}

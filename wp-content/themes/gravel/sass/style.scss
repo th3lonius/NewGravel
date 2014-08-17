@@ -9,39 +9,28 @@ License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-@import 'reset';
-@import 'base';
-@import 'mixins';
-@import 'type';
+@import 'partials/reset';
+@import 'partials/base';
+@import 'partials/mixins';
+@import 'partials/type';
+@import 'partials/superslides';
 
 
 
 figure {
-    @include block-rel;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 figcaption {
-    @include block-rel;
 }
 
 
 /*HEADER*/
-
-
-/* =LINKS
------------------------------------------------ */
-
-a:link, a:visited {
-    color: #FFF;
-    text-decoration: none;
-    -webkit-transition: all ease 0.2s;
+.masthead {
+	width: 50%; height: auto;
 }
 
-a:hover {
-    color: #FFF;
-}
 
 /* =GLOBALS
 ----------------------------------------------- */
@@ -49,18 +38,23 @@ main {
     margin: 80px auto;
     position: relative;
     max-width: 70em;
+	padding: 0 $h5;
+	text-align: center;
     z-index: 1;
-	@extend clearfix;
 }
 
 article {
+	@extend %clearfix;
     position: relative;
     text-align: left;
+	aside, & > section {
+		@include respond-to(mobile) {
+			width: 100%!important;
+		}
+	}
 }
 
-aside {
 
-}
 
 
 p a {
@@ -73,6 +67,10 @@ p a:hover { color: hsl(149, 69%, 34%); }
 
 
 strong { font-weight: 600; }
+
+.col-3-3 {
+    width: 100%;
+}
 
 .col-2-3 {
     float: left;
@@ -116,28 +114,28 @@ strong { font-weight: 600; }
 
 /* =NAVIGATION
 ----------------------------------------------- */
-.navMin, .navToggle {
-    display: none;
+.nav-up {
+    top: -40px;
 }
 
-.navMain {
+body > nav {
+	@include transition(top, 0.3s, ease-in-out, 0.1s);
     background: hsl(149, 69%, 41%);
     height: 40px;
-    left: 0;
     position: fixed;
     text-align: center;
     top: 0;
-    right: 0;
     width: 100%;
     z-index: 999999;
-    -webkit-transition: all ease 0.5s;
 	ul {
-		width: 100%;
+		@extend %clearfix;
+		display: inline-block;
+		margin: 0 auto;
+		height: 100%;
 		li {
 			float: left;
 			height: auto;
 			position: relative;
-			width: calc(100%/7);
 			&:hover::after {
 				background: #20AF64;
 				bottom: -3px;
@@ -168,26 +166,23 @@ strong { font-weight: 600; }
 }
 
 
-.logotype {
-    background: url(img/branding2.svg) no-repeat center transparent;
-    background-size: 90%;
-    display: block;
-    left: 10px; top: 10px;
-    position: fixed;
-    text-indent: -9000px;
-    width: 160px; height: 160px;
-}
-
-.navMin ul li a {
-    color: #FFF;
-    display: block;
-    font-size: 1em;
-    font-weight: 600;
-    letter-spacing: 1px;
-    line-height: 60px;
-    padding: 0 30px;
-    text-transform: uppercase;
-    -webkit-transition: all ease 0.5s;
+.subnav {
+	display: table;
+	margin: 0 auto;
+	ul {
+		@extend %clearfix;
+		width: 100%;
+		li {
+			float: left;
+			padding: 0 $base;
+			a {
+				color: hsl(149, 69%, 41%);
+				font-size: $h5;
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+		}
+	}
 }
 
 /* =HEADER
@@ -251,39 +246,30 @@ hr {
 /* =VENUES
 ----------------------------------------------- */
 #venues {
-    overflow: hidden;
-    padding: 0!important;
     position: relative;
-	article {
+	p {
 		background: #FFF;
 		bottom: 40px;
+		color: #333;
 		padding: 30px;
 		position: absolute;
 		right: 0;
 		width: 40%;
 		-webkit-backface-visibility: hidden;
 	}
-	h4 {
+	h1 {
 		background: #22B063;
 		color: #FFF;
 		bottom: 200px;
-		font-size: 2em;
 		font-weight: 700;
+		line-height: 1;
 		left: 0;
-		letter-spacing: 1px;
 		padding: 30px;
 		position: absolute;
-		text-transform: uppercase;
 		-webkit-backface-visibility: hidden;
 		address {
-			display: block;
-			font-size: 0.5em;
-			font-weight: 600;
-			position: relative;
+			font-size: $h5;
 		}
-	}
-	p {
-		margin-bottom: 0;
 	}
 }
 
@@ -340,7 +326,7 @@ table tr:nth-child(2n) td {
     background: hsla(216, 2%, 55%, 0.3);
 }
 
-/* =LINEUP
+/* =LINEUP ARCHIVE
 ----------------------------------------------- */
 #lineup ul {
     margin-top: 1em;
@@ -352,6 +338,10 @@ table tr:nth-child(2n) td {
 		overflow: hidden;
 		position: relative;
 		width: 25%;
+		@include respond-to(mobile) {
+			margin-bottom: $base;
+			width: 100%;
+		}
 		&:hover img {
 			@include scale(1.1);
 			@include transition(all, 0.25s, ease);
@@ -359,6 +349,9 @@ table tr:nth-child(2n) td {
 		}
 		&:first-child {
 			width: 50%;
+			@include respond-to(mobile) {
+				width: 100%;
+			}
 		}
 		h4 {
 			background: rgba(0,0,0,0.65);
@@ -379,11 +372,28 @@ table tr:nth-child(2n) td {
 	}
 }
 
-.show_node {
+/* =LINEUP SINGLE
+----------------------------------------------- */
+.sidebar_node {
 	background: rgba(0,0,0,0.2);
 	margin-bottom: $base;
-	padding: $base;
+	padding: $h5;
 	text-align: center;
+	&:last-child {
+		@include respond-to(mobile) { margin-right: 0; }
+	}
+	@include respond-to(mobile) {
+		float: left;
+		margin-right: 4%;
+		width: 48%;
+	}
+	a {
+		display: block;
+	}
+	.event-title {
+		@include respond-to(mobile) { font-size: $h5; }
+		
+	}
 }
 
 .showdate {
@@ -391,6 +401,7 @@ table tr:nth-child(2n) td {
 	background: #FFF;
 	color: #333;
 	margin: 0 auto;
+	text-align: center;
 	text-transform: uppercase;
 	width: 120px; height: 120px;
 }
@@ -514,383 +525,122 @@ table tr:nth-child(2n) td {
     margin: 0 auto;
 }
 
-/* =STAFF
------------------------------------------------ */
-/* entire container, keeps perspective */
-.flip-container {
-    display: inline-block;
+/*----------------------------
+    The file upload form
+-----------------------------*/
+#upload{
+    background-color:#373a3d;
+    background-image:-webkit-linear-gradient(top, #373a3d, #313437);
+    background-image:-moz-linear-gradient(top, #373a3d, #313437);
+    background-image:linear-gradient(top, #373a3d, #313437);
+    width:250px;
+    padding:30px;
+    border-radius:3px;
+    margin:200px auto 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#drop{
+    background-color: #2E3134;
+    padding: 40px 50px;
+    margin-bottom: 30px;
+    border: 20px solid rgba(0, 0, 0, 0);
+    border-radius: 3px;
+    border-image: url('img/border-image.png') 25 repeat;
+    text-align: center;
+    text-transform: uppercase;
+    font-size:16px;
+    font-weight:bold;
+    color:#7f858a;
+}
+
+#drop a{
+    background-color:#007a96;
+    padding:12px 26px;
+    color:#fff;
+    font-size:14px;
+    border-radius:2px;
+    cursor:pointer;
+    display:inline-block;
+    margin-top:12px;
+    line-height:1;
+}
+
+#drop a:hover{
+    background-color:#0986a3;
+}
+
+#drop input{
+    display:none;
+}
+
+#upload ul{
+    list-style:none;
+    margin:0 -30px;
+    border-top:1px solid #2b2e31;
+    border-bottom:1px solid #3d4043;
+}
+
+#upload ul li{
+    background-color:#333639;
+    background-image:-webkit-linear-gradient(top, #333639, #303335);
+    background-image:-moz-linear-gradient(top, #333639, #303335);
+    background-image:linear-gradient(top, #333639, #303335);
+    border-top:1px solid #3d4043;
+    border-bottom:1px solid #2b2e31;
+    padding:15px;
+    height: 52px;
     position: relative;
-	-webkit-perspective: 1000;
-    -moz-perspective: 1000;
-    -ms-perspective: 1000;
-    perspective: 1000;
-}
-	/* flip the pane when hovered */
-.flip-container:hover .flipper, .flip-container.hover .flipper {
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    transform: rotateY(180deg);
 }
 
-.flip-container, .front, .back {
-    height: 394px;
-	width: 360px;
+#upload ul li input{
+    display: none;
 }
 
-/* flip speed goes here */
-.flipper {
-	-webkit-transition: 0.4s ease;
-    -moz-transition: 0.4s ease;
-    transition: 0.4s ease;
-	-webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-	position: relative;
+#upload ul li p{
+    width: 144px;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #EEE;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 100px;
 }
 
-/* hide back of pane during swap */
-.front, .back {
-	-webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
+#upload ul li i{
+    font-weight: normal;
+    font-style:normal;
+    color:#7f7f7f;
+    display:block;
 }
 
-/* front pane, placed above back */
-.front {
-	z-index: 2;
+#upload ul li canvas{
+    top: 15px;
+    left: 32px;
+    position: absolute;
 }
 
-.front img {
-    margin-top: 2em;
+#upload ul li span{
+    width: 15px;
+    height: 12px;
+    background: url('img/icons.png') no-repeat;
+    position: absolute;
+    top: 34px;
+    right: 33px;
+    cursor:pointer;
 }
 
-/* back, initially hidden pane */
-.back {
-    color: #FFF;
-	-webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    transform: rotateY(180deg);
+#upload ul li.working span{
+    height: 16px;
+    background-position: 0 -12px;
 }
 
-.back p {
-    font-size: 1em;
+#upload ul li.error p{
+    color:red;
 }
 
-h5 {
-    width: 100%;
-}
-
-@media only screen
-and (max-width: 1200px) {
-    
-            
-    #sponsors article, #sponsors ul, #donate article {
-        width: 100%;
-    }
-        
-    .social {
-        display: none;
-    }
-    
-    #donateButton {
-        display: none;
-    }
-    
-}
-
-@media only screen
-and (max-width: 1100px) {
-    
-    .logotype {
-        display: none!important;
-    }
-    
-    #navMain ul li {
-        width: calc(100%/6);
-    }
-    
-    #venues article {
-        bottom: 0;
-        width: 100%;
-    }
-}
-
-@media only screen
-and (max-width: 900px) {
-    
-    #navMain {
-        height: 40px;
-    }
-    
-    #navMain ul li a {
-        font-size: 0.875em;
-        line-height: 40px;
-        white-space: nowrap;
-    }
-    
-    .presalepasses > li ul li, header article p {
-        font-size: 0.875em;
-    }
-    
-    header article {
-        padding: 10px;
-    }
-    
-    .festtime {
-        left: 10%!important;
-    }
-    
-}
-
-@media only screen
-and (max-width: 800px) {
-    #navMain {
-        display: none;
-    }
-    
-    .navMin {
-        display: block;
-    }
-    
-    .navMin ul {
-        display: block;
-        width: 100%;
-    }
-        
-    .navMin ul li {
-        background: #333;
-        height: 100%;
-        width: 100%;
-    }
-    
-    .navMin ul li a {
-        display: block;
-        float: left;
-        font-weight: 600;
-        letter-spacing: 2px;
-        line-height: 45px;
-        padding: 0 0 0 15px;
-        text-align: left;
-        width: 85%;
-    }
-    
-    .schedule {
-        background: hsl(149, 69%, 34%)!important;
-    }
-    
-    .festinfo {
-        background: hsl(344, 50%, 49%)!important;
-    }
-    
-    .donate {
-        background: hsl(149, 69%, 40%)!important;
-    }
-    
-    .navMin li ul {
-        display: none;
-        float: left;
-        position: relative;
-        z-index: 0;
-    }
-    
-    .navMin li ul li {
-        height: 35px;
-    }
-    
-    .navMin ul li ul li a {
-        font-size: 0.875em;
-        font-weight: 400;
-        line-height: 35px;
-        width: 100%;
-    }
-    
-    .navMin ul li ul li a:hover {
-        background: hsl(149, 69%, 41%);
-    }
-    
-    .media a {
-        background: hsl(193, 22%, 24%);
-        width: 50%!important;
-    }
-    
-    .media a:first-child {
-        background: hsl(193, 22%, 30%);
-        border-right: 1px solid rgba(255,255,255,0.3);
-    }
-    
-    .nav-toggle {
-        cursor: pointer;
-        float: right!important;
-        line-height: 10px!important;
-        padding: 0!important;
-        position: relative;
-        width: 15%!important;
-        z-index: 10000;
-    }
-    
-    .nav-toggle::before {
-        background: url(img/menu_arrow.svg);
-        background-size: 28px 16px;
-        content: "";
-        height: 16px;
-        opacity: 0.5;
-        position: absolute;
-        top: 14px;
-        right: 12px;
-        width: 28px;
-        z-index: 10000;
-        -webkit-transition: all linear 0.1s;
-    }
-    
-    .nav-toggle:hover::before {
-        opacity: 0.9;
-    }
-    
-    .rotate::before {
-        -webkit-transform: rotate(180deg);
-    }
-    
-    .presalepasses > li {
-        display: inline-block;
-        float: none;
-        width: 70%;
-    }
-}
-
-@media only screen
-and (max-width: 850px) {
-        
-
-    p {
-        font-size: 0.75em;
-    }
-    
-    h2 {
-        top: 30px;
-    }
-    
-    header {
-        height: auto;
-        padding-bottom: 0;
-        padding-top: 1em;
-    }
-        
-    .branding {
-        margin-bottom: 0;
-        width: 100%;
-    }
-    
-    #sponsors ul li {
-        margin-bottom: 1em;
-        text-align: center;
-        width: calc(76%/3);
-    }
-    
-    #sponsors img {
-        width: 100%;
-    }
-    
-    #sponsors span {
-        display: none;
-    }
-        
-}
-
-@media only screen
-and (min-width: 200px)
-and (max-width: 600px) {
-            
- 
-    h2 {
-        font-size: 2em;
-    }
-
-    p {
-        font-size: 0.75em;
-    }
-    
-    .col-1, .col-2 {
-        width: 100%;
-    }
-
-    .form_button {
-        width: 300px;
-    }
-
-    .slides-navigation a {
-        top: 25%!important;
-    }
-    
-    #venues article {
-        display: none;
-    }
-    
-    #venues h4 {
-        background: rgba(33,176,99,0.9);
-        bottom: auto;
-        font-size: 1.5em;
-        padding: 10px 30px;
-        position: relative;
-        top: 50%;
-        width: 100%;
-        -webkit-transform: translateY(-50%);
-    }
-    
-    #venues p {
-        font-size: 1em;
-    }
-    
-    #schedule h2 {
-        font-size: 1.5em;
-    }
-    
-    #lineup h3 {
-        text-align: center;
-    }
-    
-    #lineup ul {
-        margin: 0 auto;
-        width: 90%;
-    }
-    
-    #lineup ul li {
-        width: 100%;
-    }
-    
-    #lineup ul li img {
-        width: 100%;
-    }
-    
-    .flip-container {
-        margin-bottom: 1em;
-    }
-    
-    .flip-container, .front, .back {
-        height: 280px;
-        width: 100%;
-    }
-    
-    .front img {
-        margin-top: 0;
-    }
-    
-    .back p {
-        font-size: 0.875em;
-    }
-    
-    .presalepasses > li {
-        width: 90%;
-    }
-    
-    .festtime {
-        display: none;
-    }
-
-}
 
 /*
 ==============================================

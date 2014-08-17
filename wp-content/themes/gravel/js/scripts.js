@@ -1,24 +1,6 @@
-$(document).ready(function() {
+jQuery(document).ready(function($){
     
-var date  = new Date(Date.UTC(2014, 2, 28, 12, 0, 0)),
-    now   = new Date(),
-    diff  = date.getTime()/1000 - now.getTime()/1000;
-
-var clock = $('.festtime').FlipClock(diff, {
-    clockFace: 'DailyCounter',
-    countdown: true
-});
-    
-	$('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-		disableOn: 700,
-		type: 'iframe',
-		mainClass: 'mfp-fade',
-		removalDelay: 160,
-		preloader: false,
-		fixedContentPos: false
-	});
-
-    $('#venues-slider').superslides();
+    $('#venues_slider').superslides();
     
     $(".nav-toggle").click(function(){
 	    $(this).next('.subnav').slideToggle('fast');
@@ -75,29 +57,44 @@ $(window).scroll(function(){
    }
 });
     
-/*----- SCROLLING MENU -----*/
+/*MENUCONTROLLER*/
+// Hide Header on on scroll down
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $('body > nav').outerHeight();
 
-function fade_header() {
+$(window).scroll(function(event){
+    didScroll = true;
+});
 
-		if ( $(window).width() > 900 ) {
-            
-			window_scroll = $(this).scrollTop();
-            
-            if ( window_scroll > ($('header').height())) {
+setInterval(function() {
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+}, 250);
 
-				$('#navMain').css({"height": 40});
-                $('#navMain ul li a').css({
-                    "line-height": '40px'
-                });
-			} else {
-				
-				$('#navMain').css({"height": 60});
-                $('#navMain ul li a').css({
-                    "line-height": '60px'
-                });            
-			}
-		}
-	}
-    $(window).scroll(function() { fade_header() });
+function hasScrolled() {
+    var st = $(this).scrollTop();
+    
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+    
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (st > lastScrollTop && st > navbarHeight){
+        // Scroll Down
+        $('body > nav').removeClass('nav-down').addClass('nav-up');
+    } else {
+        // Scroll Up
+        if(st + $(window).height() < $(document).height()) {
+            $('body > nav').removeClass('nav-up').addClass('nav-down');
+        }
+    }
+    
+    lastScrollTop = st;
+}
  
 });

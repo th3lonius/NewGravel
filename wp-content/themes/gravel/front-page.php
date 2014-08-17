@@ -1,11 +1,11 @@
 <?php get_header(); ?>
 
 
+
+
 <!-- #UPDATES -->
-<section id="updates">
-	
-	<h2 class="altgreen">Updates</h2>
-	
+<section id="updates" class="col-2-3">
+		
 	<?php if ( have_posts() ) : ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
