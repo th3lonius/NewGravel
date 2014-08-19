@@ -35,6 +35,9 @@ figcaption {
 /* =GLOBALS
 ----------------------------------------------- */
 main {
+	@include respond-to(mobile) {
+		top: $h3;
+	}
     margin: 80px auto;
     position: relative;
     max-width: 70em;
@@ -53,8 +56,6 @@ article {
 		}
 	}
 }
-
-
 
 
 p a {
@@ -115,42 +116,62 @@ strong { font-weight: 600; }
 /* =NAVIGATION
 ----------------------------------------------- */
 .nav-up {
-    top: -40px;
+    top: -100%!important;
+	-webkit-transition: top 0.4s ease-in-out;
+}
+
+.hamburger {
+	@include respond-to(mobile) {
+		background-color: hsl(149, 69%, 41%);
+		background-image: url(img/logotype2015.svg);
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		display: block;
+		width: 100%; height: 50px;
+		position: absolute;
+		top: 0; left: 0;
+		z-index: 99;
+	}
 }
 
 body > nav {
-	@include transition(top, 0.3s, ease-in-out, 0.1s);
+	@include transition(top, 0.3s, ease-in-out);
+	@include respond-to(mobile) {
+		height: auto;
+		padding: 1em 0;
+		top: -100%;
+	}
     background: hsl(149, 69%, 41%);
     height: 40px;
     position: fixed;
     text-align: center;
     top: 0;
     width: 100%;
-    z-index: 999999;
+    z-index: 9999;
 	ul {
 		@extend %clearfix;
+		@include respond-to(mobile) {
+			display: block;
+		}
 		display: inline-block;
 		margin: 0 auto;
 		height: 100%;
 		li {
+			@include respond-to(mobile) {
+				float: none;
+				text-align: left;
+				width: 90%;
+			}
 			float: left;
 			height: auto;
 			position: relative;
-			&:hover::after {
-				background: #20AF64;
-				bottom: -3px;
-				content: "";
-				display: block;
-				height: 3px;
-				position: absolute;
-			}
-			&[data-type*="link"] a:hover, &.active a {
-				background: hsl(149, 69%, 41%);
-				color: #FFF;
-				font-weight: 600;
+			&[data-type*="link"] a:hover, & a.active {
+				color: rgba(255,255,255,1.0);
+				text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
 			}
 			a {
-				color: #FFF;
+				color: rgba(255,255,255,0.55);
 				display: block;
 				font-family: $title-font-alt;
 				font-size: $base;
@@ -159,7 +180,7 @@ body > nav {
 				line-height: 40px;
 				padding: 0 30px;
 				text-transform: uppercase;
-				-webkit-transition: all ease 0.5s;
+				@include transition(all, 0.15s, ease-in-out);
 			}
 		}
 	}

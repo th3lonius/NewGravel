@@ -34,7 +34,7 @@
 					$caption = $image['caption'];
 
 					// thumbnail
-					$size = 'large';
+					$size = 'medium';
 					$thumb = $image['sizes'][ $size ];
 					$width = $image['sizes'][ $size . '-width' ];
 					$height = $image['sizes'][ $size . '-height' ]; ?>
@@ -45,7 +45,6 @@
 						<?php the_title(); ?>
 						<address><?php the_field('address')?></address>
 					</h1>
-					<?php the_content()?>
 				</li>
 
 				<?php endif; ?>

@@ -31,9 +31,10 @@
             <a href="https://twitter.com/GreenGravelFest" id="twitter" class="icon"><img src="/img/twitter_trans.svg" alt="@GreenGravelFest Twitter page" /></a>
             <a href="https://www.facebook.com/GreenGravelComedyFest" id="facebook" class="icon"><img src="/img/facebook_trans.svg" alt="Facebook page" /></a>
         </div>-->
+        
         <nav class="nav-down">
+            <a class="hamburger" href="#"></a>
             <ul>
-                <li></li>
                 <li data-type="link"><a href="#updates" data-scroll="updates">News</a></li>
                 <li data-type="link"><a href="<?php echo site_url(); ?>/festinfo" data-scroll="about">Fest Info</a></li>
                 <li data-type="link"><a href="<?php echo site_url(); ?>/schedule" data-scroll="schedule">Schedule</a></li>
@@ -43,7 +44,7 @@
                 <li data-type="link"><a href="#staff" data-scroll="staff">Staff</a></li>
             </ul>
         </nav>
-
+        
 
 <!--<a class="logotype pulse">Green Gravel Comedy Festival</a>-->
 

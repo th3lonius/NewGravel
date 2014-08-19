@@ -19,6 +19,13 @@ h1 {
 }
 
 header h2 {
+	@include transition(top, 0.3s, ease-in-out, 0.1s);
+	@include respond-to(mobile) {
+		font-size: $h3;
+		text-align: center;
+		top: 50px;
+		width: 100%;
+	}
     background: #FFF;
     color: #333;
     left: 0;
@@ -27,7 +34,7 @@ header h2 {
     position: fixed;
     top: 60px;
     text-transform: uppercase;
-    z-index: 99999;
+    z-index: 999;
 	&::after {
 		content: '';
 		position: absolute;
@@ -82,11 +89,5 @@ p {
 ----------------------------------------------- */
 
 a:link, a:visited {
-    color: #FFF;
     text-decoration: none;
-    -webkit-transition: all ease 0.2s;
-}
-
-a:hover {
-    color: #FFF;
 }

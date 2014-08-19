@@ -1,13 +1,35 @@
 jQuery(document).ready(function($){
+	
+var str=location.href.toLowerCase();
+	
+$("nav ul li a").each(function() {
+if (str.indexOf(this.href.toLowerCase()) > -1) {
+ $("a.active").removeClass("active");
+$(this).addClass("active");
+}
+ });
+	
+	
+	$('.hamburger').click(function(e){
+		$(this).toggleClass('rotate');
+		
+		var menu = $('body > nav');
+		var topPos = $('body > nav').position().top;
+		
+		if ( topPos < 0 ) {
+			$(menu).animate({
+				top: 0
+			}, 'fast');
+		} else {
+			$(menu).animate({
+				top: '-100%'
+			}, 'fast');
+		}
+		e.preventDefault();
+	});
     
     $('#venues_slider').superslides();
     
-    $(".nav-toggle").click(function(){
-	    $(this).next('.subnav').slideToggle('fast');
-        $(this).toggleClass('rotate');
-    });  
-    
-
 
 /*----- NAVIGATION -----*/
     
@@ -62,7 +84,7 @@ $(window).scroll(function(){
 var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
-var navbarHeight = $('body > nav').outerHeight();
+var navbarHeight = $('body > nav, header h2, .hamburger').outerHeight();
 
 $(window).scroll(function(event){
     didScroll = true;
@@ -86,11 +108,13 @@ function hasScrolled() {
     // This is necessary so you never see what is "behind" the navbar.
     if (st > lastScrollTop && st > navbarHeight){
         // Scroll Down
-        $('body > nav').removeClass('nav-down').addClass('nav-up');
-    } else {
+        $('body > nav, header h2').removeClass('nav-down').addClass('nav-up');
+    } else if ($(window).width() < 800 && st > lastScrollTop && st > navbarHeight) {
+		$('body > nav, header h2, .hamburger').removeClass('nav-down').addClass('nav-up');
+	} else {
         // Scroll Up
         if(st + $(window).height() < $(document).height()) {
-            $('body > nav').removeClass('nav-up').addClass('nav-down');
+            $('body > nav, header h2').removeClass('nav-up').addClass('nav-down');
         }
     }
     

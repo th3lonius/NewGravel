@@ -29,7 +29,7 @@ get_header(); ?>
 					
 
 			<header>			
-				<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
+				<img class="target-image" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
 			</header>
 				
 				<p><?php the_field( 'bio' ); ?></p>
