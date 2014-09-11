@@ -25,49 +25,43 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-
-<!--        <div class="social group">
-            <a href="https://twitter.com/GreenGravelFest" id="twitter" class="icon"><img src="/img/twitter_trans.svg" alt="@GreenGravelFest Twitter page" /></a>
-            <a href="https://www.facebook.com/GreenGravelComedyFest" id="facebook" class="icon"><img src="/img/facebook_trans.svg" alt="Facebook page" /></a>
-        </div>-->
         
-        <nav class="nav-down">
-            <a class="hamburger" href="#"></a>
-            <ul>
-                <li data-type="link"><a href="#updates" data-scroll="updates">News</a></li>
-                <li data-type="link"><a href="<?php echo site_url(); ?>/festinfo" data-scroll="about">Fest Info</a></li>
-                <li data-type="link"><a href="<?php echo site_url(); ?>/schedule" data-scroll="schedule">Schedule</a></li>
-                <li data-type="link"><a href="<?php echo site_url(); ?>/lineup" data-scroll="lineup">Lineup</a></li>
-                <li data-type="link"><a href="<?php echo site_url(); ?>/submissions" data-scroll="submissions">Submissions</a></li>
-                <li data-type="link"><a href="#sponsors" data-scroll="sponsors">Sponsors</a></li>
-                <li data-type="link"><a href="#staff" data-scroll="staff">Staff</a></li>
-            </ul>
-        </nav>
+	<nav class="push-menu-left">
+		<ul>
+			<li data-type="link"><a href="#updates" data-scroll="updates">News</a></li>
+			<li data-type="link"><a href="<?php echo site_url(); ?>/festinfo" data-scroll="about">Fest Info</a></li>
+			<li data-type="link"><a href="<?php echo site_url(); ?>/schedule" data-scroll="schedule">Schedule</a></li>
+			<li data-type="link"><a href="<?php echo site_url(); ?>/lineup" data-scroll="lineup">Lineup</a></li>
+			<li data-type="link"><a href="<?php echo site_url(); ?>/submissions" data-scroll="submissions">Submissions</a></li>
+			<li data-type="link"><a href="#sponsors" data-scroll="sponsors">Sponsors</a></li>
+			<li data-type="link"><a href="#staff" data-scroll="staff">Staff</a></li>
+		</ul>
+	</nav>
+	
+	<a class="nav-toggler toggle-push-left" href="#"></a>
         
+	<div id="wrapper">
 
-<!--<a class="logotype pulse">Green Gravel Comedy Festival</a>-->
+	<header>
 
-<header>
+		<?php
+			if ( is_single() ) {
 
-	<?php
-		if ( is_single() ) {
-		
-			echo the_title('<h2>','</h2>');
-			
-		} elseif ( is_front_page() ) {
-		
-		
-		
-		} else {
-		
-			?> <h2><?php echo $post->post_type; ?></h2>
-			
-			<?php
-		
-		}
-	?>
+				echo the_title('<h2>','</h2>');
 
-</header>
+			} elseif ( is_front_page() ) {
 
-<main>
+
+
+			} else {
+
+				?> <h2><?php echo $post->post_type; ?></h2>
+
+				<?php
+
+			}
+		?>
+
+	</header>
+
+	<main>

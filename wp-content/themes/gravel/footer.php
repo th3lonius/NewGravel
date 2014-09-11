@@ -1,5 +1,6 @@
 </main>
     
+</div>
 
     <?php wp_footer(); ?>
     <!--[if lt IE 9]>
@@ -18,6 +19,9 @@
 		<script src="<?php bloginfo('template_directory'); ?>/upload-form/assets/js/script.js"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/js/mustache.js"></script>
 		<script src="<?php bloginfo('template_directory'); ?>/js/demo.js"></script>
+
+		<script src="<?php bloginfo('template_directory'); ?>/js/classie.js"></script>
+		<script src="<?php bloginfo('template_directory'); ?>/js/navigation.js"></script>
     
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="//use.typekit.net/rsw2iqh.js"></script>

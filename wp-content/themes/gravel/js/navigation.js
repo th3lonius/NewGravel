@@ -1,34 +1,37 @@
-/**
- * navigation.js
- *
- * Handles toggling the navigation menu for small screens.
- */
-( function() {
-	var container, button, menu;
+(function( window ){
 
-	container = document.getElementById( 'site-navigation' );
-	if ( ! container )
-		return;
+    var body = document.body,
+        mask = document.createElement("div"),
+        togglePushLeft = document.querySelector( ".toggle-push-left" ),
+        pushMenuLeft = document.querySelector( ".push-menu-left" ),
+        activeNav
+    ;
+    mask.className = "mask";
 
-	button = container.getElementsByTagName( 'h1' )[0];
-	if ( 'undefined' === typeof button )
-		return;
 
-	menu = container.getElementsByTagName( 'ul' )[0];
+    /* push menu left */
+    togglePushLeft.addEventListener( "click", function(){
+        classie.add( body, "pml-open" );
+        document.body.appendChild(mask);
+        activeNav = "pml-open";
+    } );
 
-	// Hide menu toggle button if menu is empty and return early.
-	if ( 'undefined' === typeof menu ) {
-		button.style.display = 'none';
-		return;
-	}
 
-	if ( -1 === menu.className.indexOf( 'nav-menu' ) )
-		menu.className += ' nav-menu';
 
-	button.onclick = function() {
-		if ( -1 !== container.className.indexOf( 'toggled' ) )
-			container.className = container.className.replace( ' toggled', '' );
-		else
-			container.className += ' toggled';
-	};
-} )();
+    /* hide active menu if mask is clicked */
+    mask.addEventListener( "click", function(){
+        classie.remove( body, activeNav );
+        activeNav = "";
+        document.body.removeChild(mask);
+    } );
+
+    /* hide active menu if close menu button is clicked */
+    [].slice.call(document.querySelectorAll(".close-menu")).forEach(function(el,i){
+        el.addEventListener( "click", function(){
+            classie.remove( body, activeNav );
+            activeNav = "";
+            document.body.removeChild(mask);
+        } );
+    });
+
+})( window );

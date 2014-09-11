@@ -29,7 +29,7 @@
 					$size = 'thumbnail';
 					$thumb = $image['sizes'][ $size ];
 					$width = $image['sizes'][ $size . '-width' ];
-					$height = $image['sizes'][ $size . '-height' ]; ?>
+					$height = $image['sizes']																								[ $size . '-height' ]; ?>
 
 					<?php endif; ?>	
 

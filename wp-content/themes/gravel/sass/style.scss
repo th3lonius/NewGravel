@@ -12,10 +12,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @import 'partials/reset';
 @import 'partials/base';
 @import 'partials/mixins';
+@import 'partials/media_queries';
 @import 'partials/type';
+@import 'partials/navigation';
 @import 'partials/superslides';
-
-
 
 figure {
     width: 100%;
@@ -35,11 +35,9 @@ figcaption {
 /* =GLOBALS
 ----------------------------------------------- */
 main {
-	@include respond-to(mobile) {
-		top: $h3;
-	}
     margin: 80px auto;
     position: relative;
+	top: $h3;
     max-width: 70em;
 	padding: 0 $h5;
 	text-align: center;
@@ -57,153 +55,26 @@ article {
 	}
 }
 
-
-p a {
-    color: hsl(149, 69%, 41%)!important;
-    font-weight: 700;
-}
-
-p a:hover { color: hsl(149, 69%, 34%); }
-
-
-
-strong { font-weight: 600; }
-
-.col-3-3 {
-    width: 100%;
-}
-
-.col-2-3 {
-    float: left;
-    width: 66%;
-}
-
-.col-1-3 {
-    float: right;
-    width: 30%;
-}
-
-.block { display: block; }
-
-
-.floatright {
-    float: right!important;
-}
-
-/* =FIXED ITEMS
------------------------------------------------ */
-#backToTop::before {
-    bottom: 0;
-	content: '';
-    left: 50%;
-	position: fixed;
-	width: 0;
-	height: 0;
-	border-width: 30px;
-	border-style: solid;
-	border-color: transparent transparent hsl(148, 68%, 41%) transparent;
-    z-index: 100;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
-}
-
-#backToTop:hover::before {
-    border-color: transparent transparent hsl(148, 68%, 50%) transparent;
-}
-
-/* =NAVIGATION
------------------------------------------------ */
-.nav-up {
-    top: -100%!important;
-	-webkit-transition: top 0.4s ease-in-out;
-}
-
-.hamburger {
-	@include respond-to(mobile) {
-		background-color: hsl(149, 69%, 41%);
-		background-image: url(img/logotype2015.svg);
-		background-position: 10px center;
-		background-repeat: no-repeat;
-		background-size: contain;
-		display: block;
-		width: 100%; height: 50px;
-		position: absolute;
-		top: 0; left: 0;
-		z-index: 99;
-	}
-}
-
-body > nav {
-	@include transition(top, 0.3s, ease-in-out);
-	@include respond-to(mobile) {
-		height: auto;
-		padding: 1em 0;
-		top: -100%;
-	}
-    background: hsl(149, 69%, 41%);
-    height: 40px;
-    position: fixed;
-    text-align: center;
+#wrapper {
+    position: relative;
+    z-index: 10;
     top: 0;
-    width: 100%;
-    z-index: 9999;
-	ul {
-		@extend %clearfix;
-		@include respond-to(mobile) {
-			display: block;
-		}
-		display: inline-block;
-		margin: 0 auto;
-		height: 100%;
-		li {
-			@include respond-to(mobile) {
-				float: none;
-				text-align: left;
-				width: 90%;
-			}
-			float: left;
-			height: auto;
-			position: relative;
-			&[data-type*="link"] a:hover, & a.active {
-				color: rgba(255,255,255,1.0);
-				text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
-			}
-			a {
-				color: rgba(255,255,255,0.55);
-				display: block;
-				font-family: $title-font-alt;
-				font-size: $base;
-				font-weight: 700;
-				letter-spacing: 1px;
-				line-height: 40px;
-				padding: 0 30px;
-				text-transform: uppercase;
-				@include transition(all, 0.15s, ease-in-out);
-			}
-		}
-	}
+    left: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
-
-.subnav {
-	display: table;
-	margin: 0 auto;
-	ul {
-		@extend %clearfix;
-		width: 100%;
-		li {
-			float: left;
-			padding: 0 $base;
-			a {
-				color: hsl(149, 69%, 41%);
-				font-size: $h5;
-				font-weight: 700;
-				text-transform: uppercase;
-			}
-		}
-	}
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 15;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
 }
 
 /* =HEADER

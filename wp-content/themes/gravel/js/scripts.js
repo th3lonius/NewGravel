@@ -9,25 +9,7 @@ $(this).addClass("active");
 }
  });
 	
-	
-	$('.hamburger').click(function(e){
-		$(this).toggleClass('rotate');
-		
-		var menu = $('body > nav');
-		var topPos = $('body > nav').position().top;
-		
-		if ( topPos < 0 ) {
-			$(menu).animate({
-				top: 0
-			}, 'fast');
-		} else {
-			$(menu).animate({
-				top: '-100%'
-			}, 'fast');
-		}
-		e.preventDefault();
-	});
-    
+	    
     $('#venues_slider').superslides();
     
 
