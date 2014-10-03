@@ -4,7 +4,9 @@
 
 get_header(); ?>
     
-    <article>
+    <article class="padded">
+    
+    <?php get_template_part( 'article', 'header' ); ?>
     
     	<section class="col-2-3">
 		

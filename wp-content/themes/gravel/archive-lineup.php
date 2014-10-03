@@ -16,6 +16,8 @@ get_header(); ?>
     
     <article id="lineup">
     
+    <?php get_template_part( 'article', 'header' ); ?>
+    
 		<?php if ( $lineup_query->have_posts() ) : ?>
 		
 			<ul>

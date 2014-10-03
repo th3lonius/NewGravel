@@ -3,8 +3,10 @@
 /* Template Name: Lineup Page */
 
 get_header(); ?>
+       
+    <article class="padded">
     
-    <article>
+    <?php get_template_part( 'article', 'header' ); ?>
 		
 		<?php if ( have_posts() ) : ?>
 		

@@ -24,21 +24,38 @@ h1 {
 
 header h2 {
 	@include transition(top, 0.3s, ease-in-out, 0.1s);
-	@include respond-to(mobile) {
-		font-size: $h3;
-		text-align: center;
-		top: 80px;
-		width: 100%;
-	}
-    background: #FFF;
-    color: #333;
+    background: $green;
+    color: $white;
+	font-size: $h3;
     left: 0;
     line-height: 1;
     padding: 10px 20px;
     position: fixed;
-    top: 100px;
+	text-align: center;
+    top: 80px;
     text-transform: uppercase;
+	width: auto;
     z-index: 999;
+	&.lineup {
+		padding-left: 60px;
+		&::before {
+			content: "";
+			background: url(img/lineup_icon.svg);
+			position: absolute;
+			top: 12px; left: 10px;
+			width: 40px; height: 40px;
+		}
+	}
+	&.festinfo {
+		padding-left: 60px;
+		&::before {
+			content: "";
+			background: url(img/festinfo_icon.svg);
+			position: absolute;
+			top: 12px; left: 10px;
+			width: 40px; height: 40px;
+		}
+	}
 	&::after {
 		content: '';
 		position: absolute;
@@ -48,7 +65,7 @@ header h2 {
 		top: 0;
 		border-width: 24px 24px;
 		border-style: solid;
-		border-color: #FFF transparent #FFF #FFF;
+		border-color: $green transparent $green $green;
 		z-index: 99;
 	}
 }

@@ -1,11 +1,11 @@
 <?php
 /**
- * tyler functions and definitions
+ * gravel functions and definitions
  *
- * @package tyler
+ * @package gravel
  */
 
-if ( ! function_exists( 'tyler_setup' ) ) :
+if ( ! function_exists( 'gravel_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -95,29 +95,40 @@ function schedule_post_type() {
 	) );
 }
 
+/* Plugin Name: jQuery to the footer! */
+add_action( 'wp_enqueue_scripts', 'wcmScriptToFooter', 9999 );
+function wcmScriptToFooter()
+{
+    global $wp_scripts;
+    $wp_scripts->add_data( 'jquery', 'group', 1 );
+}
 
 function theme_js() {
     wp_register_script( 'main', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '', true );
     wp_register_script( 'superslides', get_template_directory_uri() . '/js/superslides.js', array('jquery'), '', true );
     wp_register_script( 'mixitup', get_template_directory_uri() . '/js/mixitup_min.js', array('jquery'), '', true );
     wp_register_script( 'colorthief', get_template_directory_uri() . '/js/colorthief.js', array('jquery'), '', true );
+    wp_register_script( 'quantize', get_template_directory_uri() . '/js/quantize.js', array('jquery'), '', true );
+    wp_register_script( 'skrollr', get_template_directory_uri() . '/js/skrollr.js', array('jquery'), '', true );
     wp_enqueue_script( 'main' );
     wp_enqueue_script( 'superslides' );
     wp_enqueue_script( 'mixitup' );
     wp_enqueue_script( 'colorthief' );
+    wp_enqueue_script( 'quantize' );
+    wp_enqueue_script( 'skrollr' );
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_js');
 
-function tyler_setup() {
+function gravel_setup() {
 
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on tyler, use a find and replace
-	 * to change 'tyler' to the name of your theme in all the template files
+	 * If you're building a theme based on gravel, use a find and replace
+	 * to change 'gravel' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( 'tyler', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'gravel', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -133,8 +144,8 @@ function tyler_setup() {
 		'gallery',
 	) );
 }
-endif; // tyler_setup
-add_action( 'after_setup_theme', 'tyler_setup' );
+endif; // gravel_setup
+add_action( 'after_setup_theme', 'gravel_setup' );
 
 
 /**

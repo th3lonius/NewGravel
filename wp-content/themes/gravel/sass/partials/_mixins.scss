@@ -1,4 +1,23 @@
+/*TRANSLATE CENTER*/
+@mixin translate( $x: null, $y: null ) {
+	-webkit-transform: translate($x, $y);
+	-moz-transform: translate($x, $y);
+	transform: translate($x, $y);
+}
 
+@mixin rotate( $perspective: X, $degree: 45 ) {
+	-webkit-transform: rotate#{$perspective}#{("(#{$degree}deg)")};
+	-moz-transform: rotate#{$perspective}#{("(#{$degree}deg)")};
+	transform: rotate#{$perspective}#{("(#{$degree}deg)")};
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+     -moz-transform: $transform;
+      -ms-transform: $transform;
+       -o-transform: $transform;
+          transform: $transform;
+}
 
 /*ANIMATIONS*/
 @mixin keyframes($animation-name) {

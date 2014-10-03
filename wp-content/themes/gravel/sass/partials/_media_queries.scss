@@ -1,8 +1,8 @@
 /*BREAKPOINTS*/
-$break-1: 400px;
+$break-1: 200px;
 $break-2: 800px;
 $break-3: 1280px;
-$break-4: 1920px;
+$break-4: 1600px;
 
 @mixin respond-to($media) {
   @if $media == mobile {

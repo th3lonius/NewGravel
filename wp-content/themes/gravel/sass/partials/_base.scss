@@ -1,14 +1,14 @@
-/*VARIABLES*/
-$green: #92B540;
-$blue: #009BA6;
-$red: #CD4D58;
-$yellow: #CDC638;
-$black: #333332;
-$blackbg: rgba(0,0,0,0.6);
-$white: rgba(255,255,255,1.0);
-$title-font: "atrament-web", sans-serif;
-$title-font-alt: "refrigerator-deluxe", sans-serif;
-$display-font: "prenton-display", sans-serif;
+html, body {
+    height: 100%;
+	line-height: 1;
+	position: relative;
+	width: 100%;
+	-webkit-font-smoothing: antialiased!important;
+}
+
+html {
+    font-size: 62.5%;
+}
 
 body {
     background: url(img/broken_noise.jpg) repeat 0 0;
@@ -18,11 +18,7 @@ body {
     font-family: "proxima-nova";
     font-size: 1.6rem;
     line-height: 1.618;
-	overflow-x: hidden;
-}
-
-html, body {
-	position: relative;
+	overflow-x: hidden
 }
 
 %clearfix {

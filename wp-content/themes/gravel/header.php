@@ -21,12 +21,14 @@
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url');?>">
     <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.png" />
+    <script type="text/javascript" src="//use.typekit.net/rsw2iqh.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
         
-	<nav class="push-menu-left">
+	<nav class="push-menu-right">
 		<ul>
 			<li data-type="link"><a href="#updates" data-scroll="updates">News</a></li>
 			<li data-type="link"><a href="<?php echo site_url(); ?>/festinfo" data-scroll="about">Fest Info</a></li>
@@ -38,30 +40,12 @@
 		</ul>
 	</nav>
 	
-	<a class="nav-toggler toggle-push-left" href="#"></a>
+	<button type="button" role="button" class="lines-button x toggle-push-right"><span class="lines"></span></button>
+	
+	<header class="global-header">
+		<div class="logo"></div>
+    </header>
         
 	<div id="wrapper">
-
-	<header>
-
-		<?php
-			if ( is_single() ) {
-
-				echo the_title('<h2>','</h2>');
-
-			} elseif ( is_front_page() ) {
-
-
-
-			} else {
-
-				?> <h2><?php echo $post->post_type; ?></h2>
-
-				<?php
-
-			}
-		?>
-
-	</header>
 
 	<main>

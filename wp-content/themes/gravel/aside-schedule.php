@@ -10,13 +10,19 @@
 		<time><?php the_field( 'time' ); ?>p</time>
 		<span>@ <?php the_field( 'venue' ); ?></span>
 
+	</section>
+	
 				<?php 
 
 				$posts = get_field('performers');
 
 				if( $posts ): ?>
 
-					<?php $image = get_field('image'); ?>
+					<ul>
+					<?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
+						<?php setup_postdata($post); ?>
+						
+					<?php $image = get_field('image', $post->ID); ?>
 					<?php if( !empty($image) ): 
 
 					// vars
@@ -29,14 +35,10 @@
 					$size = 'thumbnail';
 					$thumb = $image['sizes'][ $size ];
 					$width = $image['sizes'][ $size . '-width' ];
-					$height = $image['sizes']																								[ $size . '-height' ]; ?>
+					$height = $image['sizes'][ $size . '-height' ]; ?>
 
 					<?php endif; ?>	
-
-
-					<ul>
-					<?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
-						<?php setup_postdata($post); ?>
+						
 						<li>
 							<a href="<?php echo get_permalink( $post->ID ); ?>">
 							<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />			
@@ -48,7 +50,5 @@
 					<?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
 				<?php endif; ?>
 
-
-	</section>
 
 </aside>

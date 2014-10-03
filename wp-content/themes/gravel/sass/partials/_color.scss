@@ -1,0 +1,20 @@
+@mixin random-hsla($attr, $color: 365, $alpha: 5) {
+  #{$attr}: hsla(150, random(50)+30, random(40)+30, 0.99);
+}
+
+.color-bar {
+	display: inline-block;
+	vertical-align: bottom;
+	width: 2%;
+}
+
+@for $i from 1 through 50 {
+	.color-bar {
+		&:nth-child(#{$i}) {
+			@include respond-to(tablet) { height: random(100) + px; }
+			height: random(60) + px;
+			@include random-hsla(background-color, 255);
+		}
+	}
+}
+

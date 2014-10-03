@@ -1,22 +1,23 @@
 (function( window ){
 
+$("button").click(function(){
+  $(this).toggleClass("close");
+});
+    
+	
     var body = document.body,
         mask = document.createElement("div"),
-        togglePushLeft = document.querySelector( ".toggle-push-left" ),
-        pushMenuLeft = document.querySelector( ".push-menu-left" ),
+        togglePushLeft = document.querySelector( ".toggle-push-right" ),
+        pushMenuLeft = document.querySelector( ".push-menu-right" ),
         activeNav
     ;
     mask.className = "mask";
 
-
     /* push menu left */
     togglePushLeft.addEventListener( "click", function(){
-        classie.add( body, "pml-open" );
-        document.body.appendChild(mask);
+        $(body).toggleClass("pml-open");
         activeNav = "pml-open";
     } );
-
-
 
     /* hide active menu if mask is clicked */
     mask.addEventListener( "click", function(){

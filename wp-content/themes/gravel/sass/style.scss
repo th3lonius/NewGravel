@@ -10,21 +10,21 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 @import 'partials/reset';
+@import 'partials/variables';
 @import 'partials/base';
 @import 'partials/mixins';
 @import 'partials/media_queries';
 @import 'partials/type';
 @import 'partials/navigation';
 @import 'partials/superslides';
+@import 'partials/color';
+@import 'partials/animations';
 
 figure {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
-figcaption {
-}
-
 
 /*HEADER*/
 .masthead {
@@ -35,17 +35,16 @@ figcaption {
 /* =GLOBALS
 ----------------------------------------------- */
 main {
-    margin: 80px auto;
+    margin: 0 auto;
+	margin-top: 10rem;
     position: relative;
-	top: $h3;
-    max-width: 70em;
-	padding: 0 $h5;
 	text-align: center;
     z-index: 1;
 }
 
 article {
 	@extend %clearfix;
+	margin: 0 auto;
     position: relative;
     text-align: left;
 	aside, & > section {
@@ -53,32 +52,60 @@ article {
 			width: 100%!important;
 		}
 	}
+	&.padded {
+		max-width: 70em;
+		padding: 0 $h5;
+	}
 }
 
 #wrapper {
+	@include transition(all, 0.25s, ease-in-out);
+	height: 100%;
     position: relative;
     z-index: 10;
-    top: 0;
-    left: 0;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
+    top: 0; bottom: 0;
+    right: 0;
 }
 
-.mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 15;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+footer {
+	margin-top: 200px;
+	position: fixed; bottom: 0; left: 0; right: 0;
+	width: 100%;
+	z-index: 999;
 }
+
 
 /* =HEADER
 ----------------------------------------------- */
+.global-header {
+    background: url(img/broken_noise.jpg) repeat 0 0;
+    background-attachment: fixed;
+    background-size: auto;
+	top: 0; left: 0;
+	width: 100%; height: 60px;
+	z-index: 9999;
+}
+
+.logo {
+	@include respond-to(tablet) {
+		background-position: -617px center;
+		width: 560px;
+	}
+	@include respond-to(laptop) {
+		background-position: -1503px center;
+	}
+	@include respond-to(desktop) {
+		background-position: -2547px center;
+	}
+	background-image: url(img/logotype2015.svg);
+	background-position: 1px center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.9;
+	position: absolute;
+	top: 20px; left: 30px;
+	width: 260px; height: 50px;
+}
 
 .branding {
     margin: 0 auto;
@@ -101,39 +128,6 @@ header article strong {
     font-weight: 900;
 }
 
-
-/* =UPDATES
------------------------------------------------ */
-#updates article {
-    border-bottom: 1px dashed rgba(30,30,30,0.6);
-    margin-bottom: 1.5em;
-	&:last-child {
-		border-bottom: none;
-	}
-	img {
-		float: left;
-		margin-right: 1.5em;
-		width: 20%;
-	}
-}
-
-hr {
-    background: rgba(0,0,0,0.3);
-    height: 1px;
-    margin-bottom: 1em;
-    width: 60%;
-}
-
-#updates time {
-    font-size: 1.25em;
-    font-weight: 600;
-    text-align: left!important;
-}
-
-
-/* =ABOUT
------------------------------------------------ */
-#about h4 { margin: 0.5em 0; }
 
 /* =VENUES
 ----------------------------------------------- */
@@ -165,59 +159,6 @@ hr {
 	}
 }
 
-
-/* =SCHEDULE
------------------------------------------------ */
-table {
-    border-collapse: separate;
-    border-spacing: 4px;
-    display: block;
-    -webkit-transition: all 1s ease;
-}
-
-table tr td, table tr th {
-    font-size: 0.75em;
-    padding: 10px;
-    text-align: left;
-    vertical-align: middle;
-    width: 25%;
-}
-
-table a {
-    color:  hsl(149, 69%, 41%)!important;
-    font-weight: 600;
-}
-
-.locale {
-    width: 15%!important;
-}
-
-table tr th {
-    color: #FFF;
-    font-size: 1.5em;
-    font-weight: 700;
-}
-
-table tr td h5 {
-    font-weight: 600;
-}
-
-table tr:nth-child(odd) th {
-    background: hsla(149, 69%, 41%, 0.8);
-}
-
-table tr:nth-child(odd) td {
-    background: hsla(149, 69%, 51%, 0.3);
-}
-
-table tr:nth-child(2n) th {
-    background: hsla(216, 2%, 55%, 0.7);
-}
-
-table tr:nth-child(2n) td {
-    background: hsla(216, 2%, 55%, 0.3);
-}
-
 /* =LINEUP ARCHIVE
 ----------------------------------------------- */
 #lineup ul {
@@ -229,27 +170,43 @@ table tr:nth-child(2n) td {
 		float: left;
 		overflow: hidden;
 		position: relative;
-		width: 25%;
-		@include respond-to(mobile) {
-			margin-bottom: $base;
-			width: 100%;
+		width: 50%;
+		@include respond-to(tablet) {
+			width: 25%;
+		}
+		@include respond-to(laptop) {
+			width: 20%;
+		}
+		@include respond-to(desktop) {
+			width: 16.66666666666667%;
 		}
 		&:hover img {
-			@include scale(1.1);
+			@include transform(scale(1.25) rotateZ(10deg));
 			@include transition(all, 0.25s, ease);
 			@include fullcolor;
 		}
+		&:hover h4 {
+			opacity: 1;
+		}
 		&:first-child {
-			width: 50%;
-			@include respond-to(mobile) {
-				width: 100%;
+			width: 100%;
+			@include respond-to(tablet) {
+				width: 50%;
+			}
+			@include respond-to(laptop) {
+				width: 40%;
+			}
+			@include respond-to(desktop) {
+				width: 33.33333333333332%;
 			}
 		}
 		h4 {
+			@include transition(all, 0.25s, ease);
 			background: rgba(0,0,0,0.65);
 			bottom: 0;
 			font-family: $title-font-alt;
 			font-weight: 500;
+			opacity: 0;
 			padding: 8px;
 			position: absolute;
 			text-transform: uppercase;
@@ -309,112 +266,6 @@ table tr:nth-child(2n) td {
 
 .saturday {
 	background: #EC563C;
-}
-
-
-
-/* =WORKSHOPS
------------------------------------------------ */
-#workshops {
-    background-color: #20AF64;
-    color: #FFF;
-	a {
-		display: inline-block;
-		font-size: 1.5em;
-		font-weight: 600;
-		position: relative;
-		-webkit-transition: all ease 0.3s;
-		&:hover::before {
-			background: #FFF;
-			content: "";
-			height: 100%;
-			left: -20px;
-			position: absolute;
-			width: 8px;
-		}
-	}
-}
-
-/* =SPONSORS
------------------------------------------------ */
-#sponsors article {
-    padding-top: 0;
-    width: 50%;
-}
-
-#sponsors ul {
-    margin: 2em auto 0;
-    width: 60%;
-}
-
-#sponsors ul li {
-    cursor: pointer;
-    display: inline-block;
-    height: 100%;
-    margin-right: 20px;
-    position: relative;
-    vertical-align: middle;
-    width: calc(97%/6 - 20px);
-}
-
-#sponsors ul li:hover img { opacity: 0.6; }
-
-#sponsors ul li:hover span { opacity: 0.8; }
-
-#sponsors img {
-    margin-bottom: 1em;
-    max-width: 100%;
-    opacity: 0.4;
-    -webkit-transition: all ease 0.5s;
-}
-
-#sponsors span {
-    display: block;
-    font-size: 1.5em;
-    font-weight: 400;
-    opacity: 0;
-    -webkit-transition: all ease 0.5s;
-}
-
-/* =DONATE
------------------------------------------------ */
-#donate article {
-    padding-top: 2em;
-    width: 50%;
-}
-
-#donate p {
-    color: #333;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.form_button {
-    padding: 16px 8px;
-    background-color: #61e69d;
-    cursor: pointer;
-    font-size: 3em;
-    font-weight: 700;
-    color: #FFFFFF;
-    border-bottom: 4px solid #5cd994;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    text-align: center;
-    width: 360px;
-    -webkit-transition: background-color 0.2s ease;
-    -moz-transition: background-color 0.2s ease;
-    -ms-transition: background-color 0.2s ease;
-    -o-transition: background-color 0.2s ease;
-    transition: background-color 0.2s ease;
-}
-
-.form_button:hover {
-    background-color: #6bf5a9;
-}
-
-#donate form img {
-    display: block;
-    margin: 0 auto;
 }
 
 /*----------------------------
@@ -531,52 +382,4 @@ table tr:nth-child(2n) td {
 
 #upload ul li.error p{
     color:red;
-}
-
-
-/*
-==============================================
-pulse
-==============================================
-*/
-
-.pulse{
-	animation-name: pulse;
-	-webkit-animation-name: pulse;	
-
-	animation-duration: 1.5s;	
-	-webkit-animation-duration: 1.5s;
-
-	animation-iteration-count: infinite;
-	-webkit-animation-iteration-count: infinite;
-}
-
-@keyframes pulse {
-	0% {
-		transform: scale(0.9);
-		opacity: 0.7;		
-	}
-	50% {
-		transform: scale(1);
-		opacity: 1;	
-	}	
-	100% {
-		transform: scale(0.9);
-		opacity: 0.7;	
-	}			
-}
-
-@-webkit-keyframes pulse {
-	0% {
-		-webkit-transform: scale(0.95);
-		opacity: 0.7;		
-	}
-	50% {
-		-webkit-transform: scale(1);
-		opacity: 1;	
-	}	
-	100% {
-		-webkit-transform: scale(0.95);
-		opacity: 0.7;	
-	}			
 }

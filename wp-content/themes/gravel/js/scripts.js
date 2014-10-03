@@ -1,5 +1,13 @@
 jQuery(document).ready(function($){
 	
+var image = new Image;
+var result = $('body > .target-image').attr('src');
+image.src = result;
+var colorThief = new ColorThief();
+var color = colorThief.getColor(image);
+	
+	console.log(color);
+
 var str=location.href.toLowerCase();
 	
 $("nav ul li a").each(function() {
@@ -14,7 +22,7 @@ $(this).addClass("active");
     
 
 /*----- NAVIGATION -----*/
-    
+
 // Cache selectors
 var lastId,
     topMenu = $("#navMain ul"),

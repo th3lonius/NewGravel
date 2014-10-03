@@ -16,6 +16,8 @@ get_header(); ?>
     
     <article id="schedule">
     
+    <?php get_template_part( 'article', 'header' ); ?>
+    
 		<?php if ( $schedule_query->have_posts() ) : ?>
 		
 			<ul>
