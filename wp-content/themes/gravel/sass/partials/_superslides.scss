@@ -1,17 +1,30 @@
 // Required
 #slides {
-  position: relative;
-  .slides-container {
-    display: none;
-  }
-  .scrollable {
+    height: 500px!important;
     position: relative;
-    top: 0;
-    left: 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    height: 100%;
-  }
+    &::after {
+        background: rgba(0,0,0,0.2);
+        content: "";
+        position: absolute;
+        top: 0; bottom: 0; left: 0; right: 0;
+        z-index: 9999;
+    }
+    .slides-container {
+        display: none;
+        li {
+            img {
+                top: -30%!important;
+            }
+        }
+    }
+    .scrollable {
+        position: relative;
+        top: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        height: 100%;
+    }
 }
 
 // Optional

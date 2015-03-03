@@ -1,5 +1,16 @@
-<?php $image = get_field('event_photo'); ?>
-<?php if( !empty($image) ): 
+
+
+<h2>Venues</h2>
+
+<?php $address = get_field('address'); ?>
+
+<ul>
+
+
+
+    
+<?php $image = get_field('venue_photo'); ?>
+<?php if( $image ): 
 
 	// vars
 	$url = $image['url'];
@@ -12,8 +23,29 @@
 	$thumb = $image['sizes'][ $size ];
 	$width = $image['sizes'][ $size . '-width' ];
 	$height = $image['sizes'][ $size . '-height' ]; ?>
+	
+	<?php foreach( $image as $image ): ?>
+
+<li>
+	<img src="<?php echo $size; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
 
 
-	<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
+   </li>
+   
+<?php endforeach; ?>
 
 <?php endif; ?>
+
+
+<?php if( $address ): ?>
+
+<?php foreach( $address as $address ): ?>
+
+<li><?php echo $address; ?></li>
+
+<?php endforeach; ?>
+
+<?php endif; ?>
+
+</ul>
+

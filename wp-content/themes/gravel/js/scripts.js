@@ -1,31 +1,44 @@
 jQuery(document).ready(function($){
-	
-var image = new Image;
-var result = $('body > .target-image').attr('src');
-image.src = result;
-var colorThief = new ColorThief();
-var color = colorThief.getColor(image);
-	
-	console.log(color);
-
+    
 var str=location.href.toLowerCase();
 	
-$("nav ul li a").each(function() {
-if (str.indexOf(this.href.toLowerCase()) > -1) {
- $("a.active").removeClass("active");
-$(this).addClass("active");
-}
- });
-	
-	    
-    $('#venues_slider').superslides();
-    
+$(function () {
+    setNavigation();
+});
 
+function setNavigation() {
+    var path = window.location.pathname;
+    path = path.replace(/\/$/, "");
+    path = decodeURIComponent(path);
+
+    $("body > nav ul li a").each(function () {
+        var href = $(this).attr('href');
+        if (path.substring(0, href.length) === href) {
+            $(this).addClass('active');
+        }
+    });
+}
+	
 /*----- NAVIGATION -----*/
+    var body = document.body,
+        mask = document.createElement("div"),
+        togglePush = $(".toggle-push-right"),
+        pushMenu = document.querySelector( ".push-menu-right" ),
+        menuClose = $(".close"),
+        activeNav
+    ;
+    
+    /* push menu left */
+    $(togglePush).click(function(){
+        $(body).toggleClass('pml-open');
+        activeNav = 'pml-open';
+        $("button").toggleClass("close");
+    });    
+
 
 // Cache selectors
 var lastId,
-    topMenu = $("#navMain ul"),
+    topMenu = $("body > nav"),
     topMenuHeight = topMenu.outerHeight(),
     // All list items
     menuItems = topMenu.find("a"),

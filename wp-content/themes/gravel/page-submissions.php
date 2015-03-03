@@ -1,39 +1,62 @@
-<?php get_header(); ?>
+<?php
 
-    <section id="content" role="main">
+/* Template Name: Submissions Page */
+
+get_header(); ?>
     
- 
-		<?php if ( have_posts() ) : ?>
+<article class="padded">
+     
+    <?php if ( have_posts() ) : ?><!-- primary loop -->
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php the_content(); ?>
-			<?php endwhile; ?>
+        <?php while ( have_posts() ) : the_post(); ?>
+          
+        <section class="col-6-12">
+           
+            <?php the_field('introduction'); ?>
+            
+        </section>         
+                    
+          
+        <section class="col-6-12 highlight">
+            
+            <?php the_field('criteria'); ?>
+            
+        </section>
+        
+    <?php if( have_rows('fee_schedule') ): ?><!-- repeater loop -->
 
+        <aside class="col-12-12 fee_schedule">
+        
+            <ul>
 
+    <?php while ( have_rows('fee_schedule') ) : the_row(); ?>
+           
+            <li>
+                <div class="group sidebar_node">
+                    <img src="<?php the_sub_field('icon'); ?>"/>
+                    <h3 class="fee-amount">$<?php the_sub_field('amount'); ?></h3>
+                    <h5 class="title"><?php the_sub_field('title'); ?></h5>
+                    <p><?php the_sub_field('notes'); ?></p>
+                </div>
+            </li>
+           
+    <?php endwhile; ?>
+        
+            </ul>
 
-		<?php else : ?>
+        </aside>
 
+    <?php endif; ?><!-- /repeater loop -->        
+            
+        <?php endwhile; ?>
 
+    <?php else : ?>
 
-		<?php endif; ?>
+        <?php get_template_part( 'content', 'none' ); ?>
+
+    <?php endif; ?><!-- /primary loop -->
 		
-				<form id="upload" method="post" action="<?php bloginfo('template_directory'); ?>/upload-form/upload.php" enctype="multipart/form-data">
-					<div id="drop">
-						Drop Here
 
-						<a>Browse</a>
-						<input type="file" name="upl" multiple />
-					</div>
-
-					<ul>
-						<!-- The file uploads will be shown here -->
-					</ul>
-
-				</form>
-
-	</section><!-- #content -->
-
-
+</article>
 
 <?php get_footer(); ?>

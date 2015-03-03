@@ -6,21 +6,22 @@ get_header(); ?>
     
 <?php
  
+add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
+
     $args = array(
-        'post_type' => 'lineup'
+        'post_type' => 'lineup',
+        'posts_per_page' => 999
     );
 
     $lineup_query = new WP_Query( $args );
 
 ?>
     
-    <article id="lineup">
-    
-    <?php get_template_part( 'article', 'header' ); ?>
-    
+    <article class="padded" id="lineup">
+        
 		<?php if ( $lineup_query->have_posts() ) : ?>
 		
-			<ul>
+			<ul class="lineup">
 
 			<?php while ( $lineup_query->have_posts() ) : $lineup_query->the_post(); ?>
               
@@ -41,14 +42,23 @@ get_header(); ?>
                 
 				<li>
 					<a href="<?php the_permalink(); ?>">
-						<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
-						<?php the_title( '<h4>', '</h4>' ); ?>
+					    <div class="performer">
+						    <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
+                            <header>
+                                <div class="content">
+                                    <div class="meta"><?php the_field('location'); ?></div>
+                                    <?php the_title( '<h3>', '</h3>' ); ?>
+                                </div>
+                            </header>
+                        </div>
 					</a>
 				</li>
 				
 				<?php endif; ?>
 
 			<?php endwhile; ?>
+			
+			<?php remove_filter( 'posts_orderby' , 'posts_orderby_lastname' ); ?>
 			
 			</ul>
 
@@ -62,6 +72,3 @@ get_header(); ?>
 	</article><!-- #lineup -->
 
 <?php get_footer(); ?>
-
-
-<?php the_field( 'year' ); ?>

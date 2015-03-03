@@ -1,11 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="230.338px" height="230.338px" viewBox="128.052 -138.833 230.338 230.338" enable-background="new 128.052 -138.833 230.338 230.338" xml:space="preserve">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 230.3 230.3" enable-background="new 0 0 230.3 230.3" xml:space="preserve">
 <g id="Layer_1_1_">
 </g>
 <g id="Layer_2">
 	<g>
-		<polygon fill="#25B163" points="221.5,-98.4 264,-98.4 264,-65.3 257.4,-58.5 249.8,-65.3 242.8,-58.7 235.4,-65.3 227.8,-58.5 221.5,-65.3"/>
-		<polygon fill="#25B163" points="264.2,50.4 264.2,-46.2 257.5,-51.6 249.8,-46.2 242.8,-51.3 235.3,-46.2 227.7,-51.6 221.5,-46.2 221.5,50.4"/>
+		<polygon fill="#FFFFFF" points="95.8,47.5 134.4,47.5 134.4,77.6 128.4,83.8 121.5,77.6 115.1,83.6 108.4,77.6 101.5,83.8 
+			95.8,77.6 		"/>
+		<polygon fill="#FFFFFF" points="134.6,182.8 134.6,95 128.5,90.1 121.5,95 115.1,90.4 108.3,95 101.4,90.1 95.8,95 95.8,182.8 		
+			"/>
 	</g>
 </g>
-<circle fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#25B163" stroke-width="10" stroke-miterlimit="10" cx="242.9" cy="-24" r="107.1"/>
+<path fill="#FFFFFF" d="M115.2,217.1c-56.2,0-101.9-45.7-101.9-101.9C13.3,59,59,13.3,115.2,13.3c56.2,0,101.9,45.7,101.9,101.9
+	C217.1,171.4,171.4,217.1,115.2,217.1z M115.2,22.4C64,22.4,22.4,64,22.4,115.2c0,51.2,41.6,92.8,92.8,92.8
+	c51.2,0,92.8-41.6,92.8-92.8C208,64,166.3,22.4,115.2,22.4z"/>
 </svg>

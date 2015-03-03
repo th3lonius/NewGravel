@@ -1,4 +1,4 @@
-<aside class="col-1-3">
+<aside class="col-4-12">
 
 	<?php if( have_rows('contacts') ): ?>
 
@@ -9,7 +9,7 @@
 		<?php while ( have_rows('contacts') ) : the_row(); ?>
 
 			<li>
-				<h4><?php the_sub_field( 'title' ); ?></h4>
+				<h5><?php the_sub_field( 'title' ); ?></h5>
 				<address><?php the_sub_field( 'address' ); ?></address>
 			</li>
 

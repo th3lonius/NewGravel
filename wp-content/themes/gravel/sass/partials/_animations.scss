@@ -1,52 +1,5 @@
 /*
 ==============================================
-pulse
-==============================================
-*/
-
-.pulse{
-	animation-name: pulse;
-	-webkit-animation-name: pulse;	
-
-	animation-duration: 1.5s;	
-	-webkit-animation-duration: 1.5s;
-
-	animation-iteration-count: infinite;
-	-webkit-animation-iteration-count: infinite;
-}
-
-@keyframes pulse {
-	0% {
-		transform: scale(0.9);
-		opacity: 0.7;		
-	}
-	50% {
-		transform: scale(1);
-		opacity: 1;	
-	}	
-	100% {
-		transform: scale(0.9);
-		opacity: 0.7;	
-	}			
-}
-
-@-webkit-keyframes pulse {
-	0% {
-		-webkit-transform: scale(0.95);
-		opacity: 0.7;		
-	}
-	50% {
-		-webkit-transform: scale(1);
-		opacity: 1;	
-	}	
-	100% {
-		-webkit-transform: scale(0.95);
-		opacity: 0.7;	
-	}			
-}
-
-/*
-==============================================
 grow
 ==============================================
 */
@@ -55,8 +8,8 @@ grow
 	animation-name: grow;
 	-webkit-animation-name: grow;	
 
-	animation-duration: 5s;	
-	-webkit-animation-duration: 5s;
+	animation-duration: 8s;	
+	-webkit-animation-duration: 8s;
 
 	animation-iteration-count: infinite;
 	-webkit-animation-iteration-count: infinite;
@@ -67,7 +20,7 @@ grow
 		transform: translateY(0);
 	}
 	50% {
-		transform: translateY(random(20) + px);
+		transform: translateY(random(50) + px);
 	}	
 	100% {
 		transform: translateY(0);
@@ -79,7 +32,7 @@ grow
 		-webkit-transform: translateY(0);
 	}
 	50% {
-		-webkit-transform: translateY(random(20) + px);
+		-webkit-transform: translateY(random(50) + px);
 	}	
 	100% {
 		-webkit-transform: translateY(0);
