@@ -1,12 +1,17 @@
-
-# BEGIN WordPress
-<IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /NewGravel/
+RewriteBase /
 RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /NewGravel/index.php [L]
-</IfModule>
 
-# END WordPress
+# add a trailing slash to /wp-admin
+RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^(wp-(content|admin|includes).*) $1 [L]
+RewriteRule ^(.*\.php)$ $1 [L]
+RewriteRule . index.php [L]
+
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+php_value memory_limit 64M
