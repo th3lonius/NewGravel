@@ -1,0 +1,8 @@
+[04-Dec-2018 00:47:41 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/th3loniu/public_html/greengravel/wp-content/themes/Green Gravel 2017/inc/customizer.php on line 18
+[04-Dec-2018 00:47:42 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/th3loniu/public_html/greengravel/wp-content/themes/Green Gravel 2017/inc/template-tags.php on line 132
+[05-Dec-2018 11:31:37 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/th3loniu/public_html/greengravel/wp-content/themes/Green Gravel 2017/inc/customizer.php on line 18
+[05-Dec-2018 14:21:12 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/th3loniu/public_html/greengravel/wp-content/themes/Green Gravel 2017/inc/customizer.php on line 18
+[06-Dec-2018 01:08:11 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/th3loniu/public_html/greengravel/wp-content/themes/Green Gravel 2017/inc/customizer.php on line 18
+[07-Dec-2018 17:02:42 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/th3loniu/public_html/greengravel/wp-content/themes/Green Gravel 2017/inc/customizer.php on line 18
+[13-Dec-2018 17:35:38 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/th3loniu/public_html/greengravel/wp-content/themes/Green Gravel 2017/inc/template-tags.php on line 132
+[13-Jan-2019 22:03:35 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/th3loniu/public_html/greengravel/wp-content/themes/Green Gravel 2017/inc/template-tags.php on line 132

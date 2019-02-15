@@ -65,16 +65,16 @@ article {
 section {
   position: relative;
 }
+header {
+  text-align: center;
+}
 .padded {
-  @include respond-to(laptop) {
-    padding: $h1;
-  }
   @include respond-to(tv) {
     max-width: 100em;
   }
   margin: 0 auto;
   max-width: 86em;
-  padding: $h4;
+  padding: 3.5em $base-padding;
 }
 .padded-x {
   padding: 1em $base-padding;
@@ -123,26 +123,11 @@ section {
 .separator {
   background: $white;
   display: inline-block;
-  margin: 0 $base;
+  margin: 0 10px;
   position: relative;
-  top: 1.2em;
-  width: 2px;
-  height: 70px;
-}
-
-%mask {
-  &::after {
-    background: transparentize($green, 0.4);
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
+  top: 0.75em;
+  width: 1px;
+  height: 40px;
 }
 
 /* =HEADER
@@ -150,7 +135,7 @@ section {
 
 .home-page .global-header {
   @include respond-to(laptop) {
-    height: 100vh;
+    height: 480px;
   }
   background-image: url(img/old_iowa_city.jpg);
   background-position: center;
@@ -188,7 +173,7 @@ section {
     height: 80%;
     top: 64px;
   }
-  background-image: url(img/logo-2017.svg);
+  background-image: url(img/logo-2016.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -383,9 +368,6 @@ $container-size: 180px;
 }
 .events {
   top: 0;
-  header {
-    text-align: center;
-  }
   figure {
     background-position: top center;
     background-repeat: no-repeat;
@@ -439,7 +421,6 @@ $container-size: 180px;
       left: 2em;
       text-align: inherit;
     }
-    padding: 0 $h4;
     position: relative;
     text-align: center;
     top: 3em;
@@ -447,11 +428,8 @@ $container-size: 180px;
     .venue,
     time,
     .ticket-link {
-      @include respond-to(tablet) {
-        font-size: $h2;
-      }
       font-family: $title-font;
-      font-size: $h4;
+      font-size: $h5;
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -465,14 +443,18 @@ $container-size: 180px;
         content: "";
         position: absolute;
         top: 0;
-        left: -78px;
-        width: 80px;
-        height: 80px;
+        left: -40px;
+        width: 40px;
+        height: 40px;
       }
     }
   }
 }
-
+.event-performers {
+  li {
+    width: 50%!important;
+  }
+}
 .events em {
   @include transform(translate(-50%, 0));
   @include respond-to(laptop) {
@@ -503,14 +485,6 @@ $container-size: 180px;
     height: 1px;
   }
 }
-
-.event-performers li {
-  @include respond-to(tablet) {
-    width: 50%!important;
-  }
-  width: 100%!important;
-}
-
 .sponsor {
   font-size: $base;
   position: absolute;
@@ -567,7 +541,7 @@ $container-size: 180px;
     float: none;
     margin-bottom: 3rem;
     position: relative;
-    width: 100%;
+    width: 75%;
     a:hover {
       color: $white;
     }
@@ -607,8 +581,8 @@ $container-size: 180px;
     }
   }
   img {
-    @extend %mask !optional;
     @include transition;
+    @include grayscale;
     @include border-radius(999);
     display: block;
     width: 100%;
@@ -678,6 +652,7 @@ $container-size: 180px;
 
 /* =LINEUP SINGLE
 ----------------------------------------------- */
+
 .sidebar_node {
   @include transition;
   background: rgba(0, 0, 0, 0.1);
@@ -716,8 +691,8 @@ $container-size: 180px;
   margin: 0 auto;
   text-align: center;
   text-transform: uppercase;
-  width: 200px;
-  height: 200px;
+  width: 175px;
+  height: 175px;
 }
 .showdate {
   @extend %showdate;
@@ -792,9 +767,6 @@ footer {
   position: relative;
   right: 0;
   z-index: 99;
-  .padded {
-    padding: $base-padding;
-  }
   section {
     @include respond-to(mobile) {
       margin-bottom: 1em!important;
@@ -840,13 +812,10 @@ footer {
     width: 100%;
     li {
       display: inline-block;
-      padding: 1.2%;
-      width: 10%;
+      padding-right: 1%;
+      width: 31%;
       height: 100%;
       vertical-align: middle;
-      &:first-child {
-        padding-left: 0;
-      }
       &:last-child {
         padding-right: 0;
       }
@@ -866,6 +835,9 @@ footer {
             background: rgba(0, 0, 0, 0.3);
           }
         }
+        img {
+          max-width: 90px;
+        }
       }
     }
   }
@@ -880,7 +852,7 @@ footer {
   }
   span {
     display: block;
-    font-size: $small;
+    font-size: $smaller;
   }
 }
 .colorscape {
